@@ -20,8 +20,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		MyWeddingManager my = MyWeddingManager.getInstance();
-//		UserAction uac = my.login( "asher@hotmaol.com","1");
+		//MyWeddingManager my = MyWeddingManager.getInstance();
+		//UserAction uac = my.login( "Yonass@gmail.com","1234");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");
@@ -43,14 +43,16 @@ public class Main {
 		//Person pr = new Person(0,"asher_main","Aycheh_mail","a sister","Tal aviv","054-4450272","Mesi@gmail.com"," acording to id",0);
 		//uac.updatePerson(pr);
 ////------------------------------------------------
-		//Person pr = new Person(0,"defr ff","tomi","uncle","USA","054-4330272","Getsh@gmail.net","creating per+toa+py",0);
-		// long ts = System.currentTimeMillis();
-		// java.sql.Date sqlDate = new Date(ts);
-		// Expenses exp = new Expenses(0, pr.getUser_id(),pr.getFirstName(), pr.getLastName(), pr.getId(), 200, 200,"","", "master card", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
-		// Expenses exp = new Expenses(0, 1, pr.getId(), 2, 4, "no money ", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
-		// Expenses exp = new Expenses(0, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), pr.getId(), 20, 20, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
-		// TotalExpenses toxp = new TotalExpenses(exp.getUser_id());
-		//uac.CreatePersonAndCreateReceivedPayment(exp, pr, toxp);
+//		Person pr = new Person(0,"defr ff","tomi","uncle","USA","054-4330272","Getsh@gmail.net","creating per+toa+py",7);
+//		System.out.println("ssssssssssssssrrrrrrrr " + pr);
+//		 long ts = System.currentTimeMillis();
+//		 java.sql.Date sqlDate = new Date(ts);
+//		//// Expenses exp = new Expenses(0, pr.getUser_id(),pr.getFirstName(), pr.getLastName(), pr.getId(), 200, 200,"","", "master card", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
+//		//// Expenses exp = new Expenses(0, 1, pr.getId(), 2, 4, "no money ", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
+//		 Expenses exp = new Expenses(0, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), pr.getId(), 20, 20, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+//		 TotalExpenses toxp = new TotalExpenses(exp.getUser_id());
+//		uac.CreatePersonAndCreateReceivedPayment(exp, pr, toxp);
+//		System.out.println(exp);
 //----------------------------------------------------
 //ALTER TABLE contacts ADD email VARCHAR(60);
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;

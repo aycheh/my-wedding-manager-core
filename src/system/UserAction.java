@@ -88,7 +88,7 @@ public UserAction(Person person, User user) {
 		/**creating new person if not exist**/
 		p = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
 		p =  PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),p.getRelationship());
-		exp = new Expenses(exp.getId(), user.getId(),p.getFirstName(),p.getLastName() , p.getId(),
+		exp = new Expenses(exp.getId(), exp.getUser_id(),p.getFirstName(),p.getLastName() , p.getId(),
 				exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 				exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), exp.getDate());
 		ExpensesDBManager.getInstance().CreateAReceivedPayment(con.getConnectionFromPool(), exp);

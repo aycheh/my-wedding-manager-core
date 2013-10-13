@@ -18,14 +18,18 @@ public class Expenses {
 	private Date date;
 	
 	
-	public Expenses(int id, int user_id, String person_firstName,String person_lastName, int person_id,
-			double received_payment, double payback_payment,
-			String payment_type, String eventType,String payback_payment_eventType, String eventAddress,
+	
+	
+	
+	public Expenses(int id, int user_id, String person_firstName,
+			String person_lastName, int person_id, double received_payment,
+			double payback_payment, String payment_type, String eventType,
+			String payback_payment_eventType, String eventAddress,
 			String comment, Date date) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
-		this.person_lastName = person_lastName;
+		this.person_firstName = person_firstName;
 		this.person_lastName = person_lastName;
 		this.person_id = person_id;
 		this.received_payment = received_payment;
@@ -36,10 +40,9 @@ public class Expenses {
 		this.eventAddress = eventAddress;
 		this.comment = comment;
 		this.date = date;
-		
-		
-		
 	}
+
+	
 	
 	public String getPerson_firstName() {
 		return person_firstName;
