@@ -9,8 +9,9 @@ import java.util.List;
 
 public class WeddingConnectionPoolManager {
 
-	private  String databaseUrl = "jdbc:mysql://localhost:3306/MyWeddingManagerDB";
+	private  String databaseUrl = "jdbc:mysql://localhost:3306/MyWeddingManagerDB?useUnicode=yes&characterEncoding=UTF-8";
 	//private  String databaseUrl = "jdbc:mysql://localhost:3306/myhebrew_db";
+	                                //jdbc:mysql://localhost:3306/db_name?useUnicode=yes&characterEncoding=UTF-8
 	private  String userName = "root";
 	private  String password = "root";
 	

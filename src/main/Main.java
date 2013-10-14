@@ -20,7 +20,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//MyWeddingManager my = MyWeddingManager.getInstance();
+		MyWeddingManager my = MyWeddingManager.getInstance();
 		//UserAction uac = my.login( "Yonass@gmail.com","1234");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
@@ -28,7 +28,7 @@ public class Main {
 //		UsersDBManager.getInstance().UpdateAuser(con.getConnectionFromPool() , u);
 
 //----------------------------------------		
-//		User u = new User(0, "נדאו", "יוסי", "1234", "Yonass@gmail.com");
+//		User u = new User(0, "נדאו", "יוסי", "1234", "TED@gmail.com");
 //		my.CreateUser(u);
 //--------------------------------	
 //		UserAction uac = new UserAction();
