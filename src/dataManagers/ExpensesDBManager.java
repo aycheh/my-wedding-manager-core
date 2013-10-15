@@ -63,35 +63,62 @@ public class ExpensesDBManager implements ExpensesManager {
 		// TODO Auto-generated method stub
 		try {
 			String sql = "update Expenses set " +
+					"person_firstName = ? ," +
+					"person_lastName = ? ," +
 					"received_payment = ? ," +
-					"payback_payment = ? ," +
-					"payment_type = ? ," +
-					"eventType = ?," +
-					"payback_payment_eventType =? ," +
-					"eventAddress =? ," +
-					"comment = ? ," +
-					"date=? where id = ?" ;
+					"payback_payment = ?," +
+					"payment_type =? ," +
+					"eventType =? ," +
+					"payback_payment_eventType = ? ," +
+					"eventAddress=? ,comment =? ,date = ? where id = ?" ;
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setDouble(1,exp.getReceived_payment());
-			pstmt.setDouble(2, exp.getPayback_payment());
-			pstmt.setString(3, exp.getPayment_type());
-			pstmt.setString(4,exp.getEventType());
-			pstmt.setString(5,exp.getPayback_payment_eventType());
-			pstmt.setString(6,exp.getEventAddress());
-			pstmt.setString(7,exp.getComment());
-			pstmt.setDate(8,exp.getDate());
-			pstmt.setInt(9,exp.getId());
+			pstmt.setDouble(3,exp.getReceived_payment());
+			pstmt.setDouble(4, exp.getPayback_payment());
+			pstmt.setString(5, exp.getPayment_type());
+			pstmt.setString(6,exp.getEventType());
+			pstmt.setString(7,exp.getPayback_payment_eventType());
+			pstmt.setString(8,exp.getEventAddress());
+			pstmt.setString(9,exp.getComment());
+			pstmt.setDate(10,exp.getDate());
+			pstmt.setInt(11,exp.getId());
+			pstmt.setString(1,exp.getPerson_firstName());
+			pstmt.setString(2,exp.getPerson_lastName());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			System.err.println("From Sql --- > No UpdateAReceivedPayment found");
 			e.printStackTrace();
 		}
-		
-	
-		
 	}
 
+	//--------------------------------
+	/***
+	 * ---------------------------+-------------+------+-----+---------+----------------+
+| id                        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| person_id                 | int(11)     | NO   |     | NULL    |                |
+| user_id                   | int(11)     | NO   |     | NULL    |                |
+| person_firstName          | varchar(60) | YES  |     | NULL    |                |
+| person_lastName           | varchar(60) | YES  |     | NULL    |                |
+| received_payment          | double      | NO   |     | NULL    |                |
+| payback_payment           | double      | NO   |     | NULL    |                |
+| payment_type              | char(30)    | NO   |     | NULL    |                |
+| eventType                 | char(30)    | NO   |     | NULL    |                |
+| payback_payment_eventType | varchar(60) | YES  |     | NULL    |                |
+| eventAddress              | char(30)    | NO   |     | NULL    |                |
+| comment                   | char(30)    | NO   |     | NULL    |                |
+| date                      | date        | YES  |     | NULL    |                |
++---------------------------+-------------+------+-----+---------+----------------+**/
+	//--------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public Expenses GetAReceivedPayment(Connection con, int person_id) {
 		// TODO Auto-generated method stub
