@@ -131,4 +131,33 @@ System.out.println("UpdateAPerson(Connection con, Person p");
 		
 	}
 
+	@Override
+	public Person GetPersonByID(Connection con, int id) {
+		Person PersonByIDToReturn = null;
+		try {
+			PreparedStatement pstmt = con.prepareStatement("select * from Person where id = ?");
+			pstmt.setInt(1,id );
+		
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()){
+				PersonByIDToReturn = new Person(id);
+				PersonByIDToReturn.setId(rs.getInt(1));
+				PersonByIDToReturn.setFirstName(rs.getString(2));
+				PersonByIDToReturn.setLastName(rs.getString(3));
+				PersonByIDToReturn.setRelationship(rs.getString(4));
+				PersonByIDToReturn.setAddress(rs.getString(5));
+				PersonByIDToReturn.setEmail(rs.getString(6));
+				PersonByIDToReturn.setPhone(rs.getString(7));
+				PersonByIDToReturn.setUser_id(rs.getInt(8));
+				PersonByIDToReturn.setComment(rs.getString(9));	
+				System.out.println("PersonByIDToReturn  = " + PersonByIDToReturn);
+				System.out.println("ResultSet rs = pstmt.executeQuery() ");
+			}		
+		} catch (Exception e) {
+			System.out.println("From person SQL : -> No person found, try again");
+			e.printStackTrace();
+		}		
+		return PersonByIDToReturn;
+	}
+
 }

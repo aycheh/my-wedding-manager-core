@@ -15,6 +15,7 @@ public interface ExpensesManager {
 	public void CreateAReceivedPayment(Connection con , Expenses exp );
 	public void UpdateAReceivedPayment(Connection con ,  Expenses exp);
 	public Expenses GetAReceivedPayment(Connection con , int person_id);//list
+	public Expenses GetExpensesByID(Connection con , int id);
 	public List<Expenses> getAllReceivedPayment(Connection con,int user_id);
 	public void DeleteAReceivedPayment(Connection con ,  int person_id);//list
 	public void updateTotalExpenses(Connection con ,TotalExpenses texp);

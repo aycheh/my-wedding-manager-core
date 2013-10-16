@@ -32,6 +32,15 @@ public class Person {
 		
 	}
 	
+public Person(Person perso){
+		
+	}
+	
+	
+	public Person(int id){
+		this.id=id;
+	}
+	
 public Person(String firstName ,String lastName, String relationship){
 		this.firstName = firstName;
 		this.lastName=lastName;

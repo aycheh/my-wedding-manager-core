@@ -43,10 +43,47 @@ public UserAction(Person person, User user) {
 	public User getUser(String email){	
 	User user = new User(email);	
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-	user = UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(), user.getEmail());
-	System.out.println("the user from userAction getUser() method--(user)--->>> " + user);
+	try {
+		user = UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(), user.getEmail());
+		System.out.println("the user from userAction getUser() method--(user)--->>> " + user);
+	} catch (Exception e) {
+		System.err.println("user not fornd");
+		e.printStackTrace();
+	}
 	return user;
 	}
+	
+	
+	
+	public Person getPerson(int id){
+		Person p = new Person(id);
+		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
+		try {
+			p = PersonDBManager.getInstance().GetPersonByID(con.getConnectionFromPool(), id);
+			System.out.println("GetPersonByID" + p);
+		} catch (Exception e) {
+			System.err.println("GetPersonByID Not Found");
+			e.printStackTrace();
+		}
+		return p;
+	}
+	
+	
+	
+	public Expenses getExpensesByID(int id){
+		Expenses exp = new Expenses(id);
+		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
+		try {
+			exp = ExpensesDBManager.getInstance().GetExpensesByID(con.getConnectionFromPool(), exp.getId());
+			System.out.println("from uac , getExpensesByID +++++++++++++++++" + exp);
+		} catch (Exception e) {
+			System.err.println("getExpensesByID Not found");
+			e.printStackTrace();
+		}
+		return exp;
+	}
+	
+	
 	
 	public void Updateuser(User u){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
@@ -64,7 +101,12 @@ public UserAction(Person person, User user) {
 	public void CreatePerson(Person p){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
-		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
+		try {
+			PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("person    : " + pr);
 
 	}
@@ -73,7 +115,7 @@ public UserAction(Person person, User user) {
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
 		PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), p);
-		//System.out.println("from uac --- > : " +p);
+		System.out.println("from uac updatePerson --- > : " +p);
 		
 	}
 	
@@ -113,18 +155,15 @@ public UserAction(Person person, User user) {
 	long ts = System.currentTimeMillis();
 	java.sql.Date sqlDate = new Date(ts);
 	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),pr.getEmail(),pr.getComment(),user.getId());
-	Person p =  PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), pr.getFirstName(), pr.getLastName(),pr.getRelationship());
-	pr=p;
+
 	exp = new Expenses(exp.getId(), user.getId(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), sqlDate);
-	//	exp = new Expenses(exp.getId(), user.getId(), p.getId(),
-//			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
-//			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), exp.getDate());
-	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);	
+	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
+	System.out.println("userAction (updateReceivedPayment -  method)- > the updated Expenses param = " + exp);
 }
 	
-	//, String firstName , String lastName
+
 	public List<Expenses> getAllReceivedPayment(int user_id){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		List<Expenses> allExpenses = new ArrayList<Expenses>();

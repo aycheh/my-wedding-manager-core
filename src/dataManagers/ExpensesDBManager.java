@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.mysql.jdbc.jdbc2.optional.SuspendableXAConnection;
+
 import system.Expenses;
 import system.TotalExpenses;
 import system.User;
@@ -61,6 +64,7 @@ public class ExpensesDBManager implements ExpensesManager {
 	@Override
 	public void UpdateAReceivedPayment(Connection con, Expenses exp) {
 		// TODO Auto-generated method stub
+		System.out.println("SQL from UpdateAReceivedPayment, the methods gets  exp = "  + exp);
 		try {
 			String sql = "update Expenses set " +
 					"person_firstName = ? ," +
@@ -228,8 +232,6 @@ System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user
 			pstmt.setInt(2,texp.getUser_id());
 			pstmt.setDouble(3, texp.getTotalReceived());
 			pstmt.setDouble(4,texp.getTotalExpenses());
-			
-			
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
@@ -238,6 +240,42 @@ System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user
 			System.out.println("creating createTotalExpenses filed, try again");
 			e.printStackTrace();
 		}
+	}
+
+	
+	
+	@Override
+	public Expenses GetExpensesByID(Connection con, int id) {
+		Expenses expensesByIDToReturn = null;
+		try {
+			
+			PreparedStatement pstmt = con.prepareStatement("select * from Expenses where id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				expensesByIDToReturn = new Expenses(rs.getInt(1));
+				expensesByIDToReturn.setId(rs.getInt(1));
+				expensesByIDToReturn.setPerson_id(rs.getInt(2));
+				expensesByIDToReturn.setUser_id(rs.getInt(3));				
+				expensesByIDToReturn.setPerson_firstName(rs.getString(4));
+				expensesByIDToReturn.setPerson_lastName(rs.getString(5));
+				expensesByIDToReturn.setReceived_payment(rs.getDouble(6));
+				expensesByIDToReturn.setPayback_payment(rs.getDouble(7));
+				expensesByIDToReturn.setPayment_type(rs.getString(8));
+				expensesByIDToReturn.setEventType(rs.getString(9));
+				expensesByIDToReturn.setPayback_payment_eventType(rs.getString(10));
+				expensesByIDToReturn.setEventAddress(rs.getString(11));
+				expensesByIDToReturn.setComment(rs.getString(12));
+				expensesByIDToReturn.setDate(rs.getDate(13));
+
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("No expensesByIDToReturn found , try again");
+			e.printStackTrace();
+		}
+		System.out.println("The expensesByIDToReturn To Return is --->>"+ expensesByIDToReturn);
+		return expensesByIDToReturn;
 	}
 	
 
