@@ -1,5 +1,6 @@
 package system;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import dataManagers.ExpensesDBManager;
@@ -107,15 +108,16 @@ public UserAction(Person person, User user) {
 		
 	}
 	
-	public void updateReceivedPayment(Expenses exp, Person p){
+	public void updateReceivedPayment(Expenses exp, Person pr){
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-	
-	p = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
-	p =  PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),p.getRelationship());
-	
-	exp = new Expenses(exp.getId(), user.getId(),p.getFirstName(),p.getLastName() , p.getId(),
+	long ts = System.currentTimeMillis();
+	java.sql.Date sqlDate = new Date(ts);
+	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),pr.getEmail(),pr.getComment(),user.getId());
+	Person p =  PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), pr.getFirstName(), pr.getLastName(),pr.getRelationship());
+	pr=p;
+	exp = new Expenses(exp.getId(), user.getId(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
-			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), exp.getDate());
+			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), sqlDate);
 	//	exp = new Expenses(exp.getId(), user.getId(), p.getId(),
 //			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 //			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), exp.getDate());

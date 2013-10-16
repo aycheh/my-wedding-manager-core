@@ -21,7 +21,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
-		UserAction uac = my.login( "tedi09@walla.com","1234");
+		UserAction uac = my.login( "a@b.co.il","1234");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");
@@ -58,11 +58,12 @@ public class Main {
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
 	    //payback_payment_eventType 
 //-----------------------------------------------
-//		Person pr = new Person(0,"Mesi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
-//		 long ts = System.currentTimeMillis();
-//		 java.sql.Date sqlDate = new Date(ts);
-//		Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
-//	    uac.updateReceivedPayment(exp, pr);
+		Person pr = new Person(0,"Mesi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",0);
+		 long ts = System.currentTimeMillis();
+		 java.sql.Date sqlDate = new Date(ts);
+		//Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
+		 Expenses exp = new Expenses(88, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), pr.getId(), 10, 10, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+		 uac.updateReceivedPayment(exp, pr);
 //----------------------------------------------
 	//	uac.getAllReceivedPayment(2);
 
