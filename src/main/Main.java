@@ -116,8 +116,8 @@ System.out.println("+++++++++++++++++++++++++++++++ ="+p);
 					eventAddress, 
 					expensescomment,
 					sqlDate);
-     	//	uac.updateReceivedPayment(exp, p);
-     	//	uac.updatePerson(p);
+     		uac.updateReceivedPayment(exp, p);
+     		uac.updatePerson(p);
      	//	==========================
      		
      		

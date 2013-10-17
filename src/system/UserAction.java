@@ -154,14 +154,18 @@ public UserAction(Person person, User user) {
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 	long ts = System.currentTimeMillis();
 	java.sql.Date sqlDate = new Date(ts);
-	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),pr.getEmail(),pr.getComment(),user.getId());
-
+	
+	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),
+			pr.getEmail(),pr.getComment(),pr.getUser_id());
+System.out.println("pr.getUser_id() ====> " +user.getId());
 	exp = new Expenses(exp.getId(), user.getId(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), sqlDate);
 	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
-	PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), pr);
-	System.out.println("userAction (updateReceivedPayment -  method)- > the updated Expenses param = " + exp);
+	//PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), pr);
+System.out.println("userAction (updateReceivedPayment -  method)- > the updated Expenses param = " + exp);	
+System.out.println("userAction (updateReceivedPayment -  method)- > the updated PERSON param = " + pr);
+System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + user.getId());
 }
 	
 
