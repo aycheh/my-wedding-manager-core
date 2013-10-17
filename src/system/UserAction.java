@@ -160,6 +160,7 @@ public UserAction(Person person, User user) {
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), sqlDate);
 	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
+	PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), pr);
 	System.out.println("userAction (updateReceivedPayment -  method)- > the updated Expenses param = " + exp);
 }
 	
