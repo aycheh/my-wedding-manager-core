@@ -96,19 +96,31 @@ public UserAction(Person person, User user) {
 		}
 	  }
 	
+	
 	/**this method is similar to "CreatePersonAndCreateReceivedPayment". it allowed just to 
 	 * create person  **/
 	public void CreatePerson(Person p){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
-		try {
-			PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//System.out.println("p00000000000000000" + p);
+		 p = (PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(),
+				p.getLastName(),p.getRelationship()));
+		 System.out.println("p11111111111111111"+p);
+		 Person p1 = new  Person(p.getId(), p.getFirstName(), p.getLastName(), p.getRelationship(),
+				 p.getAddress(), p.getPhone(), p.getEmail(), p.getComment(), user.getId());
+		System.out.println("P222222222222222222222"+p1);
+		System.out.println(p.getUser_id());
+		System.out.println(p1.getUser_id());
+		// TODO - should to iterate  on the results that returns when calling to "getpersons" method.
+		if(p.getFirstName() != p1.getFirstName() 
+				|| p.getLastName() != p1.getLastName()
+				|| p.getRelationship() != p1.getRelationship()
+				|| p == null || p.getUser_id() != p1.getUser_id()){
+			
+			p1.setId(0);
+		//PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);
+		System.out.println("p3333333333333333333"+ p1);
 		}
-		System.out.println("person    : " + pr);
-
+			
 	}
 	
 	public void updatePerson(Person p){
@@ -124,8 +136,10 @@ public UserAction(Person person, User user) {
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		/**this condition should validate if the person already exist in the person table. if exist , do not insert it as a new person
 		 * and avoid duplicate person ***/
-		if(PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(), p.getRelationship()) == null){
-		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());	
+		if(PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),
+				p.getRelationship()) == null){
+		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),
+				p.getEmail(),p.getComment(),user.getId());	
 		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
 		}
 		/**creating new person if not exist**/

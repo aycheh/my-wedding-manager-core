@@ -99,6 +99,7 @@ public class PersonDBManager implements PersonManager {
 				PersonToReturn.setPhone(rs.getString(7));
 				PersonToReturn.setUser_id(rs.getInt(8));
 				PersonToReturn.setComment(rs.getString(9));
+				System.out.println("FROM PersonToReturn QUERY :" + PersonToReturn);
 			}
 		} catch (Exception e) {
 			System.out

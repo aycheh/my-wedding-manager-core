@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.mysql.jdbc.jdbc2.optional.SuspendableXAConnection;
-
 import system.Expenses;
 import system.TotalExpenses;
 import system.User;
@@ -95,31 +93,7 @@ public class ExpensesDBManager implements ExpensesManager {
 		}
 	}
 
-	//--------------------------------
-	/***
-	 * ---------------------------+-------------+------+-----+---------+----------------+
-| id                        | int(11)     | NO   | PRI | NULL    | auto_increment |
-| person_id                 | int(11)     | NO   |     | NULL    |                |
-| user_id                   | int(11)     | NO   |     | NULL    |                |
-| person_firstName          | varchar(60) | YES  |     | NULL    |                |
-| person_lastName           | varchar(60) | YES  |     | NULL    |                |
-| received_payment          | double      | NO   |     | NULL    |                |
-| payback_payment           | double      | NO   |     | NULL    |                |
-| payment_type              | char(30)    | NO   |     | NULL    |                |
-| eventType                 | char(30)    | NO   |     | NULL    |                |
-| payback_payment_eventType | varchar(60) | YES  |     | NULL    |                |
-| eventAddress              | char(30)    | NO   |     | NULL    |                |
-| comment                   | char(30)    | NO   |     | NULL    |                |
-| date                      | date        | YES  |     | NULL    |                |
-+---------------------------+-------------+------+-----+---------+----------------+**/
-	//--------------------------------
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
@@ -168,7 +142,9 @@ System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user
 //	                               "\t" + balance + "\t" + type +
 //	                               "\t" + estimated_balance + "\t" + opning_date + "\t" + closing_date);
 	          
-	          expenses.add(new Expenses(id, user_id1,person_firstName, person_lastName,person_id1, received_payment,payback_payment, payment_type,eventType, payback_payment_eventType, eventAddress, comment,(java.sql.Date) date));
+	          expenses.add(new Expenses(id, user_id1,person_firstName, person_lastName,person_id1,
+	        		  received_payment,payback_payment, payment_type,eventType, payback_payment_eventType,
+	        		  eventAddress, comment,(java.sql.Date) date));
 	           
 	        }  
 	    } catch (SQLException e ) {

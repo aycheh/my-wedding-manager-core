@@ -21,7 +21,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
-		UserAction uac = my.login( "a@b.co.il","1234");
+		UserAction uac = my.login( "Tekle@gmail","1234");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");
@@ -37,8 +37,8 @@ public class Main {
 //		User u = new User(9,"a","ay","1234","asher@hotmaol.com");
 //		uac.Updateuser(u);
 //---------------------------------------------
-//		Person pr = new Person(0,"Mesi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
-//		uac.CreatePerson(pr);
+		Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
+		uac.CreatePerson(pr);
 //---------------------------------------------
 		//Person pr = new Person(0,"asher_main","Aycheh_mail","a sister","Tal aviv","054-4450272","Mesi@gmail.com"," acording to id",0);
 		//uac.updatePerson(pr);
@@ -116,8 +116,8 @@ System.out.println("+++++++++++++++++++++++++++++++ ="+p);
 					eventAddress, 
 					expensescomment,
 					sqlDate);
-     		uac.updateReceivedPayment(exp, p);
-     		uac.updatePerson(p);
+     		//uac.updateReceivedPayment(exp, p);
+     		//uac.updatePerson(p);
      	//	==========================
      		
      		
