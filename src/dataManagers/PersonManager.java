@@ -16,4 +16,5 @@ public interface PersonManager {
 	public void DeleteAPerson(Connection con ,  String firstName , String lastName,String relationship);
 	public  Person GetPersonByID(Connection con ,int id);
 	public List<Person> getAllPersonsByFLRUId(Connection con,String firstName , String lastName,String relationship, int user_id);
+	public   List<Person> GetUserPersonsList(Connection con ,int user_id);
 }

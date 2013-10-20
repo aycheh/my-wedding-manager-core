@@ -40,9 +40,10 @@ public class Main {
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
 		
-		User ur = uac.getUser("asher@gmail.com");
-		Person pr = new Person(0,"Tigi","getnet","sister","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
-		uac.CreatePersonsByFLRUId(pr);
+		User ur = uac.getUser("a@b.co.il");
+		//Person pr = new Person(0,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
+		//uac.CreatePersonsByFLRUId(pr);
+		uac.getAllPersons(ur.getId());
 		
 		
 		
