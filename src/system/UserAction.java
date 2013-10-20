@@ -3,6 +3,9 @@ package system;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.text.AbstractDocument.BranchElement;
+
 import dataManagers.ExpensesDBManager;
 import dataManagers.PersonDBManager;
 import dataManagers.UsersDBManager;
@@ -45,7 +48,6 @@ public UserAction(Person person, User user) {
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 	try {
 		user = UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(), user.getEmail());
-		System.out.println("the user from userAction getUser() method--(user)--->>> " + user);
 	} catch (Exception e) {
 		System.err.println("user not fornd");
 		e.printStackTrace();
@@ -97,31 +99,31 @@ public UserAction(Person person, User user) {
 	  }
 	
 	
+	
+	
+	
+	
 	/**this method is similar to "CreatePersonAndCreateReceivedPayment". it allowed just to 
 	 * create person  **/
 	public void CreatePerson(Person p){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-		//System.out.println("p00000000000000000" + p);
-		 p = (PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(),
-				p.getLastName(),p.getRelationship()));
-		 System.out.println("p11111111111111111"+p);
+		 
 		 Person p1 = new  Person(p.getId(), p.getFirstName(), p.getLastName(), p.getRelationship(),
 				 p.getAddress(), p.getPhone(), p.getEmail(), p.getComment(), user.getId());
-		System.out.println("P222222222222222222222"+p1);
-		System.out.println(p.getUser_id());
-		System.out.println(p1.getUser_id());
+		 System.out.println("p1 : " + p1);
+		 System.out.println("p : " + p);
+
 		// TODO - should to iterate  on the results that returns when calling to "getpersons" method.
-		if(p.getFirstName() != p1.getFirstName() 
-				|| p.getLastName() != p1.getLastName()
-				|| p.getRelationship() != p1.getRelationship()
-				|| p == null || p.getUser_id() != p1.getUser_id()){
+		
 			
-			p1.setId(0);
-		//PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);
-		System.out.println("p3333333333333333333"+ p1);
-		}
+		//	p1.setId(0);
+		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);
+
+		
 			
 	}
+	
+	
 	
 	public void updatePerson(Person p){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
@@ -186,13 +188,56 @@ System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + 
 	public List<Expenses> getAllReceivedPayment(int user_id){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		List<Expenses> allExpenses = new ArrayList<Expenses>();
-		allExpenses = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(), user_id);
-		
-		for (Expenses exp : allExpenses){
-			System.out.println(exp);
-		}
+		allExpenses = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(), user_id);		
+				for (Expenses exp : allExpenses){
+						System.out.println(exp);
+					}
 		return allExpenses;
 	}
 	
+
 	
+	
+
+	public List<Person> CreatePersonsByFLRUId (Person p){
+		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();		
+		List<Person> allPersons = new ArrayList<Person>();
+		
+		Person p3 = new Person(p.getId(), p.getFirstName(),
+				p.getLastName(), p.getRelationship(), p.getAddress(), p.getPhone(), p.getEmail(),
+				p.getComment(), user.getId());
+		allPersons = (PersonDBManager.getInstance().getAllPersonsByFLRUId(con.getConnectionFromPool(),
+				p.getFirstName(), p.getLastName(), p.getRelationship(),user.getId()));
+		
+		if (allPersons.isEmpty()){
+
+			System.out.println( "ps is Empty .. creating  p3: " +p3);
+			PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
+		}else {							
+						for (Person  ps : allPersons ){
+
+							if(        ps.getUser_id() != p3.getUser_id() 
+									|| !ps.getFirstName().equals(p.getFirstName())
+									|| !ps.getLastName().equals(p3.getLastName())
+									|| !ps.getRelationship().equals(p.getRelationship())  
+									){
+								
+								PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
+								break;
+							}else {
+								System.out.println("Pesron is alredy exist on youe list : " + ps);
+								ps =  null;
+								return null;
+					}
+				}
+					
+		}
+					
+				return allPersons;
+
+		
+	}
+
+	
+
 }

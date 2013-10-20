@@ -5,7 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import system.Expenses;
 import system.Person;
 import system.User;
 
@@ -43,6 +47,7 @@ public class PersonDBManager implements PersonManager {
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
+System.out.println( "SQL srom insert person - rs  ...." + rs);
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -148,4 +153,55 @@ public class PersonDBManager implements PersonManager {
 		return PersonByIDToReturn;
 	}
 
+	@Override
+	public List<Person> getAllPersonsByFLRUId(Connection con, String firstName,
+			String lastName, String relationship,int user_id)  {
+		// TODO Auto-generated method stub
+		
+		String query = "select * from Person where first_name = ? and last_name = ? and relationship = ? and user_id =?";
+		
+	    List<Person> allPersons = new ArrayList<Person>();
+	    try {
+	    	PreparedStatement pstmt = con.prepareStatement(query);
+	    	pstmt.setString(1, firstName );
+	    	pstmt.setString(2, lastName );
+	    	pstmt.setString(3, relationship );
+	    	pstmt.setInt(4, user_id);
+	    	ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            int id = rs.getInt("id");
+	            int user_id1 = rs.getInt("user_id");
+	            String first_name1 = rs.getString("first_name");
+	            String last_name1 = rs.getString("last_name");
+	            String relationship1 = rs.getString("relationship");	            
+	            String address = rs.getString("address");  
+	            String email = rs.getString("email");	            
+	            String phone = rs.getString("phone");  
+	            String comment = rs.getString("comment");
+
+//System.out.println("SQL QUERY FOR - allPersons :::::>>" + allPersons);	            
+	   		// long ts = System.currentTimeMillis();
+	   		// java.sql.Date sqlDate = new Date(ts);
+	    
+//	            System.out.println("\n"+id + "\t" + first_name1 +
+//	                               "\t" + last_name1 + "\t" + relationship1 +
+//	                               "\t" + address + "\t" + phone + "\t" + email + "\t" + comment
+//	            + "\t" + user_id);
+//	          
+	            allPersons.add(new Person(id, first_name1, last_name1, 
+	            		relationship1, address, phone, email, comment, user_id1));
+	            
+	          
+	        }  
+	    } catch (SQLException e ) {
+	    	System.out.println(query);
+	    }
+	    
+		return allPersons;
+	
+	}
+
+	
+	
+	
 }

@@ -87,7 +87,6 @@ public class UsersDBManager implements UsersManager {
 			System.out.println("No User found , try again");
 			e.printStackTrace();
 		}
-		System.out.println("GetUser SQL UserToReturn - The user is --->>"+UserToReturn);
 		return UserToReturn;
 		
 	}

@@ -45,6 +45,12 @@ public Person(String firstName ,String lastName, String relationship){
 		this.firstName = firstName;
 		this.lastName=lastName;
 	}
+public Person(String firstName ,String lastName, String relationship, int id){
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName=lastName;
+}
+
 
 	public int getId() {
 		return id;
