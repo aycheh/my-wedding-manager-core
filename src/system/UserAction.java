@@ -175,24 +175,34 @@ public UserAction(Person person, User user) {
 	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),
 			pr.getEmail(),pr.getComment(),pr.getUser_id());
 System.out.println("pr.getUser_id() ====> " +user.getId());
-	exp = new Expenses(exp.getId(), pr.getUser_id(),pr.getFirstName(),pr.getLastName() , pr.getId(),
+	exp = new Expenses(exp.getId(), user.getId(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
-			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), exp.getComment(), sqlDate);
+			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), 
+			exp.getComment(), sqlDate);
 	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
-	//PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), pr);
-System.out.println("userAction (updateReceivedPayment -  method)- > the updated Expenses param = " + exp);	
-System.out.println("userAction (updateReceivedPayment -  method)- > the updated PERSON param = " + pr);
-System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + user.getId());
+	
+	ExpensesDBManager.getInstance().UpdatePersonPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
+	
+	//PersonDBManager.getInstance().UpdateAPersonFirstLastName(con.getConnectionFromPool(), pr);
+
+//System.out.println("userAction (updateReceivedPayment -  method)- > exp :the updated Expenses param = " + exp);	
+//System.out.println("userAction (updateReceivedPayment -  method)- >  pr :the updated PERSON param = " + pr);
+//System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + user.getId());
 }
 	
 
+	
+	
+	
 	public List<Expenses> getAllReceivedPayment(int user_id){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		List<Expenses> allExpenses = new ArrayList<Expenses>();
-		allExpenses = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(), user_id);		
+		allExpenses = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(),
+				user_id);		
 				for (Expenses exp : allExpenses){
 						System.out.println(exp);
 					}
+				System.out.println("sdsdsdsdsdsdsd");
 		return allExpenses;
 	}
 	
@@ -220,7 +230,8 @@ System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + 
 							if(        ps.getUser_id() != p3.getUser_id() 
 									|| !ps.getFirstName().equals(p.getFirstName())
 									|| !ps.getLastName().equals(p3.getLastName())
-									|| !ps.getRelationship().equals(p.getRelationship())){								
+									|| !ps.getRelationship().equals(p.getRelationship())){	
+								
 								PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
 								break;
 							}else {
@@ -246,6 +257,26 @@ System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + 
 		}
 		return allPersons;
 	}
+	
+	
+	
+	
+//	public List<Expenses> uacUpdatePersonPramOnAllReceivedPayment(int user_id, Person p){
+//		
+//		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
+//		List<Expenses> allExpenses = new ArrayList<Expenses>();
+//		allExpenses  = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(), user_id);
+//		
+//		for (Expenses exp : allExpenses ){
+//
+//			if (exp.getPerson_id() == -1){
+//				System.out.println("exp  --  :" +exp);	
+//			ExpensesDBManager.getInstance().UpdateUserPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
+//		}
+//	}
+//		return allExpenses;
+//		
+//	}
 
 }
 

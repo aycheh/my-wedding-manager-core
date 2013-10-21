@@ -243,6 +243,30 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 		return allPersons;
 	}
 
+	@Override
+	public void UpdateAPersonFirstLastName(Connection con, Person p) {
+		System.out.println("UpdateAPerson(Connection con, Person p");
+		
+		String sql = "update Person set first_name =? ,last_name =? where id= ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(3, p.getId());
+			pstmt.setString(1, p.getFirstName());
+			pstmt.setString(2, p.getLastName());
+//			pstmt.setString(3, p.getRelationship());
+//			pstmt.setString(4, p.getAddress());
+//			pstmt.setString(5, p.getEmail());
+//			pstmt.setString(6, p.getPhone());
+//			pstmt.setInt(7, p.getUser_id());
+//			pstmt.setString(8, p.getComment());
+			pstmt.executeUpdate();
+			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
+		} catch (SQLException e) {
+			System.out.println("creating peson filed, try again");
+			e.printStackTrace();
+		}
+	}
+
 	
 	
 	

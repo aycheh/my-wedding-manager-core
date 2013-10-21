@@ -22,6 +22,9 @@ public interface ExpensesManager {
 	public TotalExpenses getTotalExpenses(Connection con ,int user_id);
 	public void createTotalExpenses(Connection con ,TotalExpenses txpenses);
 	
+	public void UpdatePersonPramOnAllReceivedPayment(Connection con,Expenses exp);
+	//public List<Expenses> UpdateUserPramOnAllReceivedPayment(Connection con,int user_id);
+	
 	
 	
 	

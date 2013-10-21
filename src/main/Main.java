@@ -40,8 +40,8 @@ public class Main {
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
 		
-		User ur = uac.getUser("asher@gmail.com");
-		Person pr = new Person(0,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
+		//User ur = uac.getUser("asher@gmail.com");
+		//Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
 		//uac.CreatePersonsByFLRUId(pr);
 		//uac.getAllPersons(ur.getId());
 		
@@ -53,9 +53,9 @@ public class Main {
 		//uac.updatePerson(pr);
 ////------------------------------------------------
 		//Person pr = new Person(0,"yy","yy","yy","USA","054-4330272","yy@gmail.net","yy per+toa+py",7);
-		System.out.println("ssssssssssssssrrrrrrrr " + pr);
-		 long ts = System.currentTimeMillis();
-		 java.sql.Date sqlDate = new Date(ts);
+		//System.out.println("ssssssssssssssrrrrrrrr " + pr);
+		// long ts = System.currentTimeMillis();
+		// java.sql.Date sqlDate = new Date(ts);
 		//// Expenses exp = new Expenses(0, pr.getUser_id(),pr.getFirstName(), pr.getLastName(), pr.getId(), 200, 200,"","", "master card", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
 		//// Expenses exp = new Expenses(0, 1, pr.getId(), 2, 4, "no money ", "birthday", "Bar Mizva","Nataniya", "birthday it was good", sqlDate);
 		// Expenses exp = new Expenses(0, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), pr.getId(), 900, 700, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
@@ -67,13 +67,19 @@ public class Main {
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
 	    //payback_payment_eventType 
 //-----------------------------------------------
-		
-//		Person pr = new Person(0,"Mesi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",0);
-//		 long ts = System.currentTimeMillis();
-//		 java.sql.Date sqlDate = new Date(ts);
+		User ur = new User("asher@gmail.com");
+//		Person pr = new Person(29,"Messi","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
+		 long ts = System.currentTimeMillis();
+		 java.sql.Date sqlDate = new Date(ts);
 		//Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
-//		 Expenses exp = new Expenses(88, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), pr.getId(), 10, 10, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+//		 Expenses exp = new Expenses(88, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), 29, 100, 101, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+
 //		 uac.updateReceivedPayment(exp, pr);
+
+		 //uac.uacUpdateUserPramOnAllReceivedPayment(ur.getId(), pr);
+//		 uac.getAllReceivedPayment(ur.getId());
+
+		 
 //		  int person_id = 31;
 //		  String personFirstName = "mesyAyche";
 //		  String personLastName = "seffefeaychehh";
@@ -125,7 +131,7 @@ public class Main {
 //					eventAddress, 
 //					expensescomment,
 //					sqlDate);
-     		//uac.updateReceivedPayment(exp, p);
+//     		uac.updateReceivedPayment(exp, p);
      		//uac.updatePerson(p);
      	//	==========================
      		

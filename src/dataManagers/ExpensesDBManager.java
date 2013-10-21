@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import system.Expenses;
+import system.Person;
 import system.TotalExpenses;
 import system.User;
 
@@ -112,7 +113,7 @@ public class ExpensesDBManager implements ExpensesManager {
 	@Override
 	public List<Expenses> getAllReceivedPayment(Connection con,int user_id) {
 		// TODO Auto-generated method stub
-System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user_id)");
+//System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user_id)");
 		String query = "select * from Expenses where user_id = ?";
 		
 	    List<Expenses> expenses = new ArrayList<Expenses>();
@@ -138,13 +139,18 @@ System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user
 //	   		 long ts = System.currentTimeMillis();
 //	   		 java.sql.Date sqlDate = new Date(ts);
 	    
-//	            System.out.println("\n"+deposit_id + "\t" + client_id +
-//	                               "\t" + balance + "\t" + type +
-//	                               "\t" + estimated_balance + "\t" + opning_date + "\t" + closing_date);
+	            System.out.println("\n"+id + "\t" + user_id +
+	                               "\t" + person_firstName + "\t" + person_lastName +
+	                               "\t" + person_id1 + "\t" + received_payment + "\t" + payback_payment +"\t"+ payment_type 
+	                               +"\t"+ eventType +"\t"+ payback_payment_eventType +"\t"+ eventAddress
+	                               +"\t"+ comment +"\t"+ date);
 	          
 	          expenses.add(new Expenses(id, user_id1,person_firstName, person_lastName,person_id1,
 	        		  received_payment,payback_payment, payment_type,eventType, payback_payment_eventType,
 	        		  eventAddress, comment,(java.sql.Date) date));
+	          for (Expenses ep:expenses ){
+	        	  System.out.println("ep" + ep );
+	          }
 	           
 	        }  
 	    } catch (SQLException e ) {
@@ -253,6 +259,44 @@ System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user
 		System.out.println("The expensesByIDToReturn To Return is --->>"+ expensesByIDToReturn);
 		return expensesByIDToReturn;
 	}
+
+//	@Override
+//	public List<Expenses> UpdateUserPramOnAllReceivedPayment(Connection con, int user_id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	
+	
+	@Override
+	public void UpdatePersonPramOnAllReceivedPayment(Connection con, Expenses exp) {
+		// TODO Auto-generated method stub
+		System.out.println("SQL Expenses exp-> :" + exp);
+		try {
+			String sql = "update Expenses set  person_firstName = ? , person_lastName = ? ,date = ? where person_id = ? and user_id =?" ;
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setDate(3,exp.getDate());
+			pstmt.setInt(4,exp.getPerson_id());
+			pstmt.setString(1,exp.getPerson_firstName());
+			pstmt.setString(2,exp.getPerson_lastName());
+			pstmt.setInt(5,exp.getUser_id());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.err.println("From Sql --- > No UpdateAReceivedPayment found");
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	
+	
+	
+	
+
+
 	
 
 	
