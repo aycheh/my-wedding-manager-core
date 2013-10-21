@@ -68,13 +68,12 @@ public class Main {
 	    //payback_payment_eventType 
 //-----------------------------------------------
 		User ur = new User("asher@gmail.com");
-//		Person pr = new Person(29,"Messi","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
+		Person pr = new Person(29,"Messi","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
 		 long ts = System.currentTimeMillis();
 		 java.sql.Date sqlDate = new Date(ts);
-		//Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
-//		 Expenses exp = new Expenses(88, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), 29, 100, 101, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
-
-//		 uac.updateReceivedPayment(exp, pr);
+		 //Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
+		 Expenses exp = new Expenses(89, pr.getUser_id(), pr.getFirstName(), pr.getLastName(), 29, 100, 101, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+		 uac.updateReceivedPayment(exp, pr);
 
 		 //uac.uacUpdateUserPramOnAllReceivedPayment(ur.getId(), pr);
 //		 uac.getAllReceivedPayment(ur.getId());

@@ -114,13 +114,7 @@ public UserAction(Person person, User user) {
 		 System.out.println("p : " + p);
 
 		// TODO - should to iterate  on the results that returns when calling to "getpersons" method.
-		
-			
-		//	p1.setId(0);
-		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);
-
-		
-			
+		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);	
 	}
 	
 	
@@ -142,7 +136,6 @@ public UserAction(Person person, User user) {
 		if(CreatePersonsByFLRUId(p) == null){
 		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),
 				p.getEmail(),p.getComment(),p.getUser_id());	
-		//PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
 		CreatePersonsByFLRUId(pr);
 		}
 		/**creating new person if not exist**/
@@ -182,12 +175,7 @@ System.out.println("pr.getUser_id() ====> " +user.getId());
 	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
 	
 	ExpensesDBManager.getInstance().UpdatePersonPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
-	
-	//PersonDBManager.getInstance().UpdateAPersonFirstLastName(con.getConnectionFromPool(), pr);
 
-//System.out.println("userAction (updateReceivedPayment -  method)- > exp :the updated Expenses param = " + exp);	
-//System.out.println("userAction (updateReceivedPayment -  method)- >  pr :the updated PERSON param = " + pr);
-//System.out.println("userAction (updateReceivedPayment -  method USER_ID)- = " + user.getId());
 }
 	
 
@@ -246,39 +234,7 @@ System.out.println("pr.getUser_id() ====> " +user.getId());
 	}
 
 	
-	
-	public List<Person> getAllPersons(int user_id){
-		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();		
-		List<Person> allPersons = new ArrayList<Person>();
-		allPersons = PersonDBManager.getInstance().GetUserPersonsList(con.getConnectionFromPool(), user_id);
-		
-		for(Person pr : allPersons){
-			System.out.println(pr);
-		}
-		return allPersons;
-	}
-	
-	
-	
-	
-//	public List<Expenses> uacUpdatePersonPramOnAllReceivedPayment(int user_id, Person p){
-//		
-//		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-//		List<Expenses> allExpenses = new ArrayList<Expenses>();
-//		allExpenses  = ExpensesDBManager.getInstance().getAllReceivedPayment(con.getConnectionFromPool(), user_id);
-//		
-//		for (Expenses exp : allExpenses ){
-//
-//			if (exp.getPerson_id() == -1){
-//				System.out.println("exp  --  :" +exp);	
-//			ExpensesDBManager.getInstance().UpdateUserPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
-//		}
-//	}
-//		return allExpenses;
-//		
-//	}
 
 }
 
 
-//PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),p.getRelationship()) == null

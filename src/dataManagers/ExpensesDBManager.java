@@ -112,8 +112,7 @@ public class ExpensesDBManager implements ExpensesManager {
 
 	@Override
 	public List<Expenses> getAllReceivedPayment(Connection con,int user_id) {
-		// TODO Auto-generated method stub
-//System.out.println("List<Expenses> getAllReceivedPayment(Connection con,int user_id)");
+
 		String query = "select * from Expenses where user_id = ?";
 		
 	    List<Expenses> expenses = new ArrayList<Expenses>();
@@ -139,19 +138,15 @@ public class ExpensesDBManager implements ExpensesManager {
 //	   		 long ts = System.currentTimeMillis();
 //	   		 java.sql.Date sqlDate = new Date(ts);
 	    
-	            System.out.println("\n"+id + "\t" + user_id +
-	                               "\t" + person_firstName + "\t" + person_lastName +
-	                               "\t" + person_id1 + "\t" + received_payment + "\t" + payback_payment +"\t"+ payment_type 
-	                               +"\t"+ eventType +"\t"+ payback_payment_eventType +"\t"+ eventAddress
-	                               +"\t"+ comment +"\t"+ date);
+//	            System.out.println("\n"+id + "\t" + user_id +
+//	                               "\t" + person_firstName + "\t" + person_lastName +
+//	                               "\t" + person_id1 + "\t" + received_payment + "\t" + payback_payment +"\t"+ payment_type 
+//	                               +"\t"+ eventType +"\t"+ payback_payment_eventType +"\t"+ eventAddress
+//	                               +"\t"+ comment +"\t"+ date);
 	          
 	          expenses.add(new Expenses(id, user_id1,person_firstName, person_lastName,person_id1,
 	        		  received_payment,payback_payment, payment_type,eventType, payback_payment_eventType,
-	        		  eventAddress, comment,(java.sql.Date) date));
-	          for (Expenses ep:expenses ){
-	        	  System.out.println("ep" + ep );
-	          }
-	           
+	        		  eventAddress, comment,(java.sql.Date) date));	           
 	        }  
 	    } catch (SQLException e ) {
 	    	System.out.println(query);
@@ -260,11 +255,6 @@ public class ExpensesDBManager implements ExpensesManager {
 		return expensesByIDToReturn;
 	}
 
-//	@Override
-//	public List<Expenses> UpdateUserPramOnAllReceivedPayment(Connection con, int user_id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	
 	

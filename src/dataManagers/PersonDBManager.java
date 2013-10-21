@@ -201,47 +201,7 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	
 	}
 
-	@Override
-	public List<Person> GetUserPersonsList(Connection con, int user_id) {
-			String query = "select * from  Person where user_id =?";
-		
-	    List<Person> allPersons = new ArrayList<Person>();
-	    try {
-	    	PreparedStatement pstmt = con.prepareStatement(query);
 
-	    	pstmt.setInt(1, user_id);
-	    	ResultSet rs = pstmt.executeQuery();
-	        while (rs.next()) {
-	            int id = rs.getInt("id");
-	            int user_id1 = rs.getInt("user_id");
-	            String first_name1 = rs.getString("first_name");
-	            String last_name1 = rs.getString("last_name");
-	            String relationship1 = rs.getString("relationship");	            
-	            String address = rs.getString("address");  
-	            String email = rs.getString("email");	            
-	            String phone = rs.getString("phone");  
-	            String comment = rs.getString("comment");
-
-//System.out.println("SQL QUERY FOR - allPersons :::::>>" + allPersons);	            
-	   		// long ts = System.currentTimeMillis();
-	   		// java.sql.Date sqlDate = new Date(ts);
-	    
-//	            System.out.println("\n"+id + "\t" + first_name1 +
-//	                               "\t" + last_name1 + "\t" + relationship1 +
-//	                               "\t" + address + "\t" + phone + "\t" + email + "\t" + comment
-//	            + "\t" + user_id);
-//	          
-	            allPersons.add(new Person(id, first_name1, last_name1, 
-	            		relationship1, address, phone, email, comment, user_id1));
-	            
-	          
-	        }  
-	    } catch (SQLException e ) {
-	    	System.out.println(query);
-	    }
-	    
-		return allPersons;
-	}
 
 	@Override
 	public void UpdateAPersonFirstLastName(Connection con, Person p) {
@@ -253,12 +213,6 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 			pstmt.setInt(3, p.getId());
 			pstmt.setString(1, p.getFirstName());
 			pstmt.setString(2, p.getLastName());
-//			pstmt.setString(3, p.getRelationship());
-//			pstmt.setString(4, p.getAddress());
-//			pstmt.setString(5, p.getEmail());
-//			pstmt.setString(6, p.getPhone());
-//			pstmt.setInt(7, p.getUser_id());
-//			pstmt.setString(8, p.getComment());
 			pstmt.executeUpdate();
 			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
 		} catch (SQLException e) {
