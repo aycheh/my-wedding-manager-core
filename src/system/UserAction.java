@@ -19,6 +19,8 @@ public class UserAction {
 	private Person person;
 	private User user;
 	protected WeddingConnectionPoolManager con;
+	MyWeddingManager my = MyWeddingManager.getInstance();
+	
 	
 	public UserAction (User user){
 		this.user = user;
@@ -138,8 +140,8 @@ public UserAction(Person person, User user) {
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		/**this condition should validate if the person already exist in the person table. if exist , do not insert it as a new person
 		 * and avoid duplicate person ***/
-		if(PersonDBManager.getInstance().GetPerson(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),
-				p.getRelationship()) == null){
+		UserAction uac = my.login(user.getEmail(),user.getPassword());
+		if(uac.CreatePersonsByFLRUId(p) == null){
 		Person pr = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),
 				p.getEmail(),p.getComment(),p.getUser_id());	
 		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), pr);
