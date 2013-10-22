@@ -91,10 +91,9 @@ public UserAction(Person person, User user) {
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		if ((UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(),user.getEmail())) != null){
 			UsersDBManager.getInstance().UpdateAuser(con.getConnectionFromPool(), u);
-			
-			System.out.println(" from (user UpdateAuser ) UPDATED ...u..." + u);
 		}else {
-			System.out.println(" from (user UpdateAuser )no user found ......");
+			//TODO throw exceptions 
+		System.out.println("You are not alowed to update thid user");
 		}
 	  }
 	
@@ -106,13 +105,11 @@ public UserAction(Person person, User user) {
 	/**this method is similar to "CreatePersonAndCreateReceivedPayment". it allowed just to 
 	 * create person  **/
 	public void CreatePerson(Person p){
-		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-		 
+		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager(); 
 		 Person p1 = new  Person(p.getId(), p.getFirstName(), p.getLastName(), p.getRelationship(),
 				 p.getAddress(), p.getPhone(), p.getEmail(), p.getComment(), user.getId());
 		 System.out.println("p1 : " + p1);
 		 System.out.println("p : " + p);
-
 		// TODO - should to iterate  on the results that returns when calling to "getpersons" method.
 		PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p1);	
 	}
@@ -169,14 +166,11 @@ public UserAction(Person person, User user) {
 	
 	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),
 			pr.getEmail(),pr.getComment(),pr.getUser_id());
-System.out.println("pr.getUser_id() ====> " +user.getId());
 	exp = new Expenses(exp.getId(), exp.getUser_id(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), 
 			exp.getComment(), sqlDate);
-	System.out.println("Expenses sending to sql > exp: " +exp);
-	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
-	
+	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);	
 	ExpensesDBManager.getInstance().UpdatePersonPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
 
 }
@@ -197,7 +191,17 @@ System.out.println("pr.getUser_id() ====> " +user.getId());
 		return allExpenses;
 	}
 	
+public List<Person> getallPersons (int user_id){
+	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
+	List<Person> Persons = new ArrayList<Person>();
+	Persons = PersonDBManager.getInstance().getAllPersonsByUserId(con.getConnectionFromPool(), user.getId());
 
+	for(Person pr: Persons){
+		System.out.println(pr);
+	}
+	
+	return Persons;	
+}
 	
 	
 
@@ -211,18 +215,14 @@ System.out.println("pr.getUser_id() ====> " +user.getId());
 		allPersons = (PersonDBManager.getInstance().getAllPersonsByFLRUId(con.getConnectionFromPool(),
 				p.getFirstName(), p.getLastName(), p.getRelationship(),p.getUser_id()));
 		
-		if (allPersons.isEmpty()){
-
-			System.out.println( "ps is Empty .. creating  p3: " +p3);
-			PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
-		}else {							
+				 if (allPersons.isEmpty()){
+					 PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
+					}else {							
 						for (Person  ps : allPersons ){
-
 							if(        ps.getUser_id() != p3.getUser_id() 
 									|| !ps.getFirstName().equals(p.getFirstName())
 									|| !ps.getLastName().equals(p3.getLastName())
-									|| !ps.getRelationship().equals(p.getRelationship())){	
-								
+									|| !ps.getRelationship().equals(p.getRelationship())){									
 								PersonDBManager.getInstance().CreateNewPerson(con.getConnectionFromPool(), p3);
 								break;
 							}else {
@@ -233,11 +233,7 @@ System.out.println("pr.getUser_id() ====> " +user.getId());
 				}	
 		}	
 				return allPersons;
-
 	}
-
-	
-
 }
 
 

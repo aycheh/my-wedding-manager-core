@@ -221,6 +221,37 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 		}
 	}
 
+	@Override
+	public List<Person> getAllPersonsByUserId(Connection con, int user_id) {
+
+		String query = "select * from Person  where user_id =?";
+	    List<Person> allPersons = new ArrayList<Person>();
+	    try {
+	    	PreparedStatement pstmt = con.prepareStatement(query);;
+	    	pstmt.setInt(1, user_id);
+	    	ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            int id = rs.getInt("id");
+	            int user_id1 = rs.getInt("user_id");
+	            String first_name = rs.getString("first_name");
+	            String last_name = rs.getString("last_name");
+	            String relationship = rs.getString("relationship");	            
+	            String address = rs.getString("address");  
+	            String email = rs.getString("email");	            
+	            String phone = rs.getString("phone");  
+	            String comment = rs.getString("comment");
+	            
+	            allPersons.add(new Person(id, first_name, last_name, 
+	            		relationship, address, phone, email, comment, user_id1));   
+
+	        }  
+	    } catch (SQLException e ) {
+	    	System.out.println(query);
+	    }
+	    
+		return allPersons;
+	}
+
 	
 	
 	
