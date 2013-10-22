@@ -261,7 +261,7 @@ public class ExpensesDBManager implements ExpensesManager {
 	@Override
 	public void UpdatePersonPramOnAllReceivedPayment(Connection con, Expenses exp) {
 		// TODO Auto-generated method stub
-		System.out.println("SQL Expenses exp-> :" + exp);
+		System.out.println("From SQL Expenses exp-> :" + exp);
 		try {
 			String sql = "update Expenses set  person_firstName = ? , person_lastName = ? ,date = ? where person_id = ? and user_id =?" ;
 			PreparedStatement pstmt = con.prepareStatement(sql);

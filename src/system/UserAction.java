@@ -121,7 +121,8 @@ public UserAction(Person person, User user) {
 	
 	public void updatePerson(Person p){
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
+		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),
+				p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
 		PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), p);
 		System.out.println("from uac updatePerson --- > : " +p);
 		
@@ -168,10 +169,11 @@ public UserAction(Person person, User user) {
 	pr = new Person(pr.getId(),pr.getFirstName(),pr.getLastName(),pr.getRelationship(),pr.getAddress(),pr.getPhone(),
 			pr.getEmail(),pr.getComment(),pr.getUser_id());
 System.out.println("pr.getUser_id() ====> " +user.getId());
-	exp = new Expenses(exp.getId(), user.getId(),pr.getFirstName(),pr.getLastName() , pr.getId(),
+	exp = new Expenses(exp.getId(), exp.getUser_id(),pr.getFirstName(),pr.getLastName() , pr.getId(),
 			exp.getReceived_payment(), exp.getPayback_payment(), exp.getPayment_type(),
 			exp.getEventType(),exp.getPayback_payment_eventType(), exp.getEventAddress(), 
 			exp.getComment(), sqlDate);
+	System.out.println("Expenses sending to sql > exp: " +exp);
 	ExpensesDBManager.getInstance().UpdateAReceivedPayment(con.getConnectionFromPool(), exp);
 	
 	ExpensesDBManager.getInstance().UpdatePersonPramOnAllReceivedPayment(con.getConnectionFromPool(), exp);
