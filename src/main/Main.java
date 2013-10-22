@@ -34,8 +34,8 @@ public class Main {
 //		UserAction uac = new UserAction();
 //		uac.getUser("asher@gmail.com");	
 //-------------------------------------------
-//		User u = new User(9,"a","ay","1234","asher@hotmaol.com");
-//		uac.Updateuser(u);
+		//User u = new User(0,"Tekle","seffefe","1234","tekle@hotmaol.com");
+		//uac.Updateuser(u);
 //---------------------------------------------
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
@@ -49,8 +49,9 @@ public class Main {
 		
 		
 //---------------------------------------------
-		//Person pr = new Person(0,"asher_main","Aycheh_mail","a sister","Tal aviv","054-4450272","Mesi@gmail.com"," acording to id",0);
-		//uac.updatePerson(pr);
+		//User u = uac.getUser("mes@gmail.com");
+		Person pr = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
+		uac.updatePerson(pr);
 ////------------------------------------------------
 		//Person pr = new Person(0,"yy","yy","yy","USA","054-4330272","yy@gmail.net","yy per+toa+py",7);
 		//System.out.println("ssssssssssssssrrrrrrrr " + pr);
@@ -67,14 +68,14 @@ public class Main {
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
 	    //payback_payment_eventType 
 //-----------------------------------------------
-		User ur = new User("asher@gmail.com");
-		Person pr = new Person(29,"Tekle","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
-		 long ts = System.currentTimeMillis();
-		 java.sql.Date sqlDate = new Date(ts);
+		//User ur = new User("asher@gmail.com");
+		//Person pr = new Person(29,"Tekle","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
+		// long ts = System.currentTimeMillis();
+		// java.sql.Date sqlDate = new Date(ts);
 		
 		 //Expenses exp = new Expenses(1, 0, 1, 600, 750, "check", "wedding", "Bar Mizva","Nataniya", "it was good", sqlDate);
-		 Expenses exp = new Expenses(88, 1, pr.getFirstName(), pr.getLastName(), 29, 100, 101, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
-		 uac.updateReceivedPayment(exp, pr);
+		// Expenses exp = new Expenses(88, 1, pr.getFirstName(), pr.getLastName(), 29, 100, 101, "master card", "birthday", "Bar Mizva","Nataniya", "natania", sqlDate);
+		// uac.updateReceivedPayment(exp, pr);
 
 		 //uac.uacUpdateUserPramOnAllReceivedPayment(ur.getId(), pr);
 //		 uac.getAllReceivedPayment(ur.getId());

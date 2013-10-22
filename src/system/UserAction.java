@@ -120,9 +120,10 @@ public UserAction(Person person, User user) {
 	
 	
 	public void updatePerson(Person p){
+		System.out.println("perspn p :"+p);
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),
-				p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),user.getId());
+				p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),p.getUser_id());
 		PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), p);
 		System.out.println("from uac updatePerson --- > : " +p);
 		
