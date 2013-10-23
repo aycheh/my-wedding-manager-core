@@ -95,21 +95,6 @@ public class ExpensesDBManager implements ExpensesManager {
 	}
 
 
-	
-	
-	
-	@Override
-	public Expenses GetAReceivedPayment(Connection con, int person_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void DeleteAReceivedPayment(Connection con, int person_id) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public List<Expenses> getAllReceivedPayment(Connection con,int user_id) {
 
@@ -281,8 +266,36 @@ public class ExpensesDBManager implements ExpensesManager {
 		
 	}
 
+	@Override
+	public void updatePersonParamOnExpensesTable(Connection con , 
+			String person_firstName, String person_lastName,int person_id,int user_id) {
+
+		try {
+			String sql = "update Expenses set  person_firstName = ? , person_lastName = ?  where person_id = ? and user_id =?" ;
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,person_firstName);
+			pstmt.setString(2,person_lastName);
+			pstmt.setInt(3,person_id);
+			pstmt.setInt(4,user_id);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.err.println("From Sql --- > No UpdateAReceivedPayment found");
+			e.printStackTrace();
+		}
+
+	}
 	
-	
+
+
+
+	@Override
+	public void DeleteAReceivedPayment(Connection con, int person_id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

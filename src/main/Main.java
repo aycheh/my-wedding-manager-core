@@ -40,16 +40,16 @@ public class Main {
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
 		
-		User ur = uac.getUser("asher@gmail.com");
+//		User ur = uac.getUser("asher@gmail.com");
 		//Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
 		//uac.CreatePersonsByFLRUId(pr);
-		uac.getallPersons(ur.getId());
+		uac.getallPersons(3);
 		
 		
 		
 		
 //---------------------------------------------
-		User u = uac.getUser("mes@gmail.com");
+		//User u = uac.getUser("mes@gmail.com");
 		//Person pr = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
 		//uac.updatePerson(pr);
 		//uac.getallPersons(3);

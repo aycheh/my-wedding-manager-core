@@ -115,13 +115,16 @@ public UserAction(Person person, User user) {
 	}
 	
 	
-	
+	// TODO ===>> get the person_id sum how !!! (from GUI OR sum how!!) 
 	public void updatePerson(Person p){
 		System.out.println("perspn p :"+p);
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),
 				p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),p.getUser_id());
 		PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), p);
+		
+		ExpensesDBManager.getInstance().updatePersonParamOnExpensesTable
+		(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),p.getId(), p.getUser_id());
 		System.out.println("from uac updatePerson --- > : " +p);
 		
 	}
@@ -194,10 +197,10 @@ public UserAction(Person person, User user) {
 public List<Person> getallPersons (int user_id){
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 	List<Person> Persons = new ArrayList<Person>();
-	Persons = PersonDBManager.getInstance().getAllPersonsByUserId(con.getConnectionFromPool(), user.getId());
+	Persons = PersonDBManager.getInstance().getAllPersonsByUserId(con.getConnectionFromPool(), user_id);
 
 	for(Person pr: Persons){
-		System.out.println(pr);
+		System.out.println("FROM JAVA UAC  : "+pr);
 	}
 	
 	return Persons;	
