@@ -43,7 +43,7 @@ public class Main {
 //		User ur = uac.getUser("asher@gmail.com");
 		//Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
 		//uac.CreatePersonsByFLRUId(pr);
-		uac.getallPersons(3);
+		//uac.getallPersons(3);
 		
 		
 		
@@ -69,8 +69,11 @@ public class Main {
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
 	    //payback_payment_eventType 
 //-----------------------------------------------
-		//User ur = new User("asher@gmail.com");
-		//Person pr = new Person(29,"Tekle","aycheh","a sister","New York 2","054-4450272","Mesi@gmail.co.il","3 update person",ur.getId());
+		User ur = new User("Eden@gmail.com");
+		//uac.getUser(ur.getEmail());
+		//Person pr = new Person(32,"Almogi","getshee","dother","roshon la zion","054-4450272","Al@gmail.co.il","Traing to update person",3);
+		//uac.updatePerson(pr);
+		//uac.getPerson(pr.getId());
 		// long ts = System.currentTimeMillis();
 		// java.sql.Date sqlDate = new Date(ts);
 		
@@ -79,7 +82,6 @@ public class Main {
 		// uac.updateReceivedPayment(exp, pr);
 
 		 //uac.uacUpdateUserPramOnAllReceivedPayment(ur.getId(), pr);
-//		 uac.getAllReceivedPayment(ur.getId());
 
 		 
 //		  int person_id = 31;

@@ -11,6 +11,7 @@ public class Person {
 	private String email;
 	private String comment;
 	private int user_id;
+	private Person person;
 	
 	
 	public Person(int id, String firstName, String lastName,
@@ -33,7 +34,7 @@ public class Person {
 	}
 	
 public Person(Person perso){
-		
+		this.person = person;
 	}
 	
 	
@@ -51,6 +52,17 @@ public Person(String firstName ,String lastName, String relationship, int id){
 	this.lastName=lastName;
 }
 
+
+
+
+
+	public Person getPerson() {
+	return person;
+}
+
+public void setPerson(Person person) {
+	this.person = person;
+}
 
 	public int getId() {
 		return id;
@@ -141,16 +153,27 @@ public Person(String firstName ,String lastName, String relationship, int id){
 		this.user_id = user_id;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", relationship=" + relationship + ", address="
 				+ address + ", phone=" + phone + ", email=" + email
-				+ ", comment=" + comment + ", user_id=" + user_id + "]";
+				+ ", comment=" + comment + ", user_id=" + user_id + ", person="
+				+ person + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Person [id=" + id + ", firstName=" + firstName + ", lastName="
+//				+ lastName + ", relationship=" + relationship + ", address="
+//				+ address + ", phone=" + phone + ", email=" + email
+//				+ ", comment=" + comment + ", user_id=" + user_id + "]";
+//	}
 	
 
+	
+	
 	
 	
 }

@@ -141,9 +141,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 				PersonByIDToReturn.setPhone(rs.getString(7));
 				PersonByIDToReturn.setUser_id(rs.getInt(8));
 				PersonByIDToReturn.setComment(rs.getString(9));
+				
 				System.out.println("PersonByIDToReturn  = "
 						+ PersonByIDToReturn);
-				System.out.println("ResultSet rs = pstmt.executeQuery() ");
+				System.out.println("SQL Person By ID ToReturn--->) " + PersonByIDToReturn);
 			}
 		} catch (Exception e) {
 			System.out

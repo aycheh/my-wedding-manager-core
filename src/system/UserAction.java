@@ -116,16 +116,26 @@ public UserAction(Person person, User user) {
 	
 	
 	// TODO ===>> get the person_id sum how !!! (from GUI OR sum how!!) 
-	public void updatePerson(Person p){
-		System.out.println("perspn p :"+p);
+	public Person updatePerson(Person pr){	
+		Person old_p = new Person(pr.getId());
+		Person new_p = new Person(pr.getId(), pr.getFirstName(), pr.getLastName(),
+				pr.getRelationship(),pr.getAddress(),pr.getPhone(),pr.getEmail(),pr.getComment(),pr.getUser_id());
+		System.out.println("new_p  : " +new_p);
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
-		p  = new Person(p.getId(),p.getFirstName(),p.getLastName(),p.getRelationship(),
-				p.getAddress(),p.getPhone(),p.getEmail(),p.getComment(),p.getUser_id());
-		PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), p);
-		
-		ExpensesDBManager.getInstance().updatePersonParamOnExpensesTable
-		(con.getConnectionFromPool(), p.getFirstName(), p.getLastName(),p.getId(), p.getUser_id());
-		System.out.println("from uac updatePerson --- > : " +p);
+		try {
+			old_p = PersonDBManager.getInstance().GetPersonByID(con.getConnectionFromPool(), old_p.getId());
+			System.out.println("old_p :" + old_p);
+			if(old_p !=null){
+			System.out.println("second new_p  to update :" +new_p);
+			PersonDBManager.getInstance().UpdateAPerson(con.getConnectionFromPool(), new_p);
+			ExpensesDBManager.getInstance().updatePersonParamOnExpensesTable(con.getConnectionFromPool(),
+					new_p.getFirstName(), new_p.getLastName(), new_p.getId(), new_p.getUser_id());
+			}
+		} catch (Exception e) {
+			System.err.println("GetPersonByID Not Found" + e.getMessage());
+			e.printStackTrace();
+		}
+		return old_p;
 		
 	}
 	
