@@ -1,17 +1,18 @@
 package main;
 
+import java.io.ObjectInputStream.GetField;
 import java.sql.Connection;
 
 import dataManagers.UsersDBManager;
 import dataManagers.UsersManager;
 import dataManagers.WeddingConnectionPoolManager;
-
 import system.Expenses;
 import system.MyWeddingManager;
 import system.Person;
 import system.TotalExpenses;
 import system.User;
 import system.UserAction;
+
 import java.sql.Date;
 
 public class Main {
@@ -22,6 +23,9 @@ public class Main {
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
 		UserAction uac = my.login( "Eden@gmail.com","1234");
+		
+		
+		uac.searchPerson("%a%" , "%%");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");
@@ -69,7 +73,7 @@ public class Main {
 // ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
 	    //payback_payment_eventType 
 //-----------------------------------------------
-		User ur = new User("Eden@gmail.com");
+		//User ur = new User("Eden@gmail.com");
 		//uac.getUser(ur.getEmail());
 		//Person pr = new Person(32,"Almogi","getshee","dother","roshon la zion","054-4450272","Al@gmail.co.il","Traing to update person",3);
 		//uac.updatePerson(pr);

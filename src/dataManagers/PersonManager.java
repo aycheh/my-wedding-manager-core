@@ -18,4 +18,5 @@ public interface PersonManager {
 	public  Person GetPersonByID(Connection con ,int id);
 	public List<Person> getAllPersonsByFLRUId(Connection con,String firstName , String lastName,String relationship, int user_id);
 	public List<Person> getAllPersonsByUserId(Connection con, int user_id);
+	public List<Person> searchPersonsName(Connection con,String firstName , String lastName,int user_id);
 }

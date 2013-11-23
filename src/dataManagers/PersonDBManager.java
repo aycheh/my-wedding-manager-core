@@ -253,6 +253,40 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 		return allPersons;
 	}
 
+	@Override
+	public List<Person> searchPersonsName(Connection con, String firstName,
+			String lastName, int user_id){
+		// TODO Auto-generated method stub
+
+		String query = "select * from Person where   first_name like ? and last_name like ? and user_id =?";
+		
+	    List<Person> allPersons = new ArrayList<Person>();
+	    try {
+	    	PreparedStatement pstmt = con.prepareStatement(query);
+	    	pstmt.setString(1, firstName );
+	    	pstmt.setString(2, lastName );
+	    	pstmt.setInt(3,user_id);
+	    	ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            int id = rs.getInt("id");
+	            int user_id1 = rs.getInt("user_id");
+	            String first_name1 = rs.getString("first_name");
+	            String last_name1 = rs.getString("last_name");
+	            String relationship1 = rs.getString("relationship");	            
+	            String address = rs.getString("address");  
+	            String email = rs.getString("email");	            
+	            String phone = rs.getString("phone");  
+	            String comment = rs.getString("comment");
+
+            allPersons.add(new Person(id, first_name1, last_name1, 
+	            		relationship1, address, phone, email, comment, user_id1));
+	        }  
+	    } catch (SQLException e ) {
+	    	System.out.println(query);
+	    }
+		return allPersons;
+	}
+
 	
 	
 	
