@@ -249,10 +249,8 @@ public List<Person> getallPersons (int user_id){
 	}
 	
 	public List<Person> searchPerson(String FirstName , String lastName){
-		System.out.println("FirstName : " + FirstName );
-		System.out.println("lastName : " + lastName);
 		if (FirstName == null && !lastName.isEmpty() || lastName==null && !FirstName.isEmpty()){
-			System.out.println("FirstName or lastName are empty : please insert seatch term in the fild" );
+			System.err.println("FirstName or lastName are empty : please insert seatch term in the fild" );
 			return null;
 		}
 		Person pr = new Person(FirstName,lastName, user.getId());
@@ -262,18 +260,17 @@ public List<Person> getallPersons (int user_id){
 				pr.getFirstName(), pr.getLastName(),user.getId());
 		
 		if (persons.isEmpty()){
-			System.out.println("persons.isEmpty() :No person found, please try a gaim .." );
+			System.err.println("There is no person matches your search term, please try a gaim .." );
 			return null;
 		}
 		for (Person pr1 : persons){
 			if(user.getId() != pr1.getUser_id()){
-				System.out.println("user.getId() != pr1.getUser_id() :No person found, please try a gaim .." );
-				System.out.println("pr1 : " + pr1);
+				System.err.println("no person found, please try a gaim .." );
 				return null;	
 			}
 		
 		}
-		System.out.println("persons" + persons);
+		System.out.println("persons : " + persons);
 		return persons;
 	}
 	

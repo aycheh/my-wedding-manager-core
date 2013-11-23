@@ -25,7 +25,7 @@ public class Main {
 		UserAction uac = my.login( "Eden@gmail.com","1234");
 		
 		
-		uac.searchPerson("%a%" , "%%");
+		uac.searchPerson("%asher%" , "% %");
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");

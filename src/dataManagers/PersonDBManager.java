@@ -256,9 +256,7 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	@Override
 	public List<Person> searchPersonsName(Connection con, String firstName,
 			String lastName, int user_id){
-		// TODO Auto-generated method stub
-
-		String query = "select * from Person where   first_name like ? and last_name like ? and user_id =?";
+		String query = "select * from Person where first_name like ? and last_name like ? and user_id =?";
 		
 	    List<Person> allPersons = new ArrayList<Person>();
 	    try {
