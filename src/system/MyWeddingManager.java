@@ -1,5 +1,9 @@
 package system;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import dataManagers.UsersDBManager;
 import dataManagers.WeddingConnectionPoolManager;
 
@@ -19,13 +23,24 @@ public class MyWeddingManager {
 	private MyWeddingManager() {
 		con = new WeddingConnectionPoolManager();
 	}
-
 	
-	public void CreateUser(User u){
+	// this method should receive object "User" and Object "Photo"
+	public void uploadUserPhoto(User u, InputStream ips){
+		UserAction uac =  login(u.getEmail() , u.getPassword());
+		if (uac != null){
+		u = UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(), u.getEmail());
+		if(ips != null){
+		UsersDBManager.getInstance().saveUserPhoto(con.getConnectionFromPool(), u, ips );
+		 }else{
+			 System.out.println("no Image");
+		  }
+		}
+	}
+	
+	public void CreateUser(User u,InputStream ips){
 		User user = new User(u.getId(),u.getFirstName(),u.getLastName(),u.getPassword(),u.getEmail());	
 		UsersDBManager.getInstance().CreateNewUser(con.getConnectionFromPool(), user);
-			System.out.println(user);		
-				
+		uploadUserPhoto(user, ips);
 	}
 	
 	public UserAction login(String email , String password){		

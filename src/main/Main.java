@@ -1,5 +1,12 @@
 package main;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.ObjectInputStream.GetField;
 import java.sql.Connection;
 
@@ -14,18 +21,50 @@ import system.User;
 import system.UserAction;
 
 import java.sql.Date;
+import java.util.BitSet;
+
+import javax.imageio.ImageIO;
 
 public class Main {
 
 	/**
 	 * @param args
 	 */
+
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
-		UserAction uac = my.login( "Eden@gmail.com","1234");
+		UserAction uac = my.login( "asher@gmail.com","1234");
+		//uac.searchPerson("%asher%" , "%a%",3);
 		
+		/**uploadUserPhoto**/
+//		InputStream ips = null;
+//		File image = new File("/home/asher/Pictures/2012/05/היליי ופזית באמבטיה/CIMG0410.JPG");
+//		
+//		try {
+//			ips = new FileInputStream(image);
+//			System.out.println(image.length()/1000);
+//			User user = new User(1,"asher","Aycheh","1234","asher@gmail.com");
+//			my.uploadUserPhoto(user, ips);
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		uac.searchPerson("%asher%" , "%a%",3);
+		/**CreateUser with photo**/
+//		InputStream ips = null;
+//		File image = new File("/home/asher/Pictures/2012/05/13/CIMG0311.JPG");
+//		try {
+//			ips = new FileInputStream(image);
+//			User u = new User(0, "ab", "natan", "1234", "abnatan@gmail.com");
+//			//my.uploadUserPhoto(u, ips);
+//			my.CreateUser(u ,ips);
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//		InputStream ips = new BufferedInputStream(new FileInputStream(path));
+//      BufferedImage image = ImageIO.read(ips);
 		
 //		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 //		User u = new User(0,"asher","aycheh","12345","asher@gmail.com");

@@ -1,10 +1,12 @@
 package dataManagers;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import system.User;
 
 public class UsersDBManager implements UsersManager {
@@ -89,6 +91,32 @@ public class UsersDBManager implements UsersManager {
 		}
 		return UserToReturn;
 		
+	}
+
+	@Override
+	public void saveUserPhoto(Connection con, User u , InputStream ips) {
+		try {
+            // constructs SQL statement
+            String sql = "INSERT INTO user_image (user_id, first_name, last_name, photo) values (?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, u.getId());
+            statement.setString(2, u.getFirstName());
+            statement.setString(3, u.getLastName());
+             
+            if (ips != null) {
+                // fetches input stream of the upload file for the blob column
+                statement.setBlob(4, ips);
+            }
+ 
+            // sends the statement to the database server
+            int row = statement.executeUpdate();
+            if (row > 0) {
+                System.out.println("File uploaded and saved into database");
+            }
+        } catch (SQLException ex) {
+           
+            ex.printStackTrace();
+        }
 	}
 
 }

@@ -248,27 +248,17 @@ public List<Person> getallPersons (int user_id){
 				return allPersons;
 	}
 	
-	public List<Person> searchPerson(String FirstName , String lastName, int user_id){
-System.out.println("11111FirstName111111 :"+FirstName + " 1111 lastName 1111 :" +  lastName );
-		
+	public List<Person> searchPerson(String FirstName , String lastName, int user_id){	
 		if (FirstName == null && !lastName.isEmpty() || lastName==null && !FirstName.isEmpty()){
 			System.err.println("FirstName or lastName are empty : please insert seatch term in the fild" );
 			return null;
 		}
 		
-		Person pr = new Person(FirstName,lastName, user.getId());
-		
-System.out.println("11111 user.getId() 1111111  : " + user_id);
-		
+		Person pr = new Person(FirstName,lastName, user.getId());		
 		List<Person> persons = new ArrayList<Person>();		
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
 		persons = PersonDBManager.getInstance().searchPersonsName(con.getConnectionFromPool(),
-				pr.getFirstName(), pr.getLastName(),user_id);
-		
-System.out.println("22222222 user_id 222222 " + user_id);
-		
-System.out.println(" 1111 persons 1111   : " + persons); 
-		
+				pr.getFirstName(), pr.getLastName(),user_id);	
 		if (persons.isEmpty()){
 			System.err.println("There is no person matches your search term, please try a gaim .." );
 			return null;
@@ -280,9 +270,10 @@ System.out.println(" 1111 persons 1111   : " + persons);
 			}
 		
 		}
-		System.out.println(" to return: 333 persons 333 : " + persons);
 		return persons;
 	}
+	
+	
 	
 }
 

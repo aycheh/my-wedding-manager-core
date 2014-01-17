@@ -6,6 +6,7 @@ public class User {
 	private String lastName;
 	private String password;
 	private String email;
+	private int image;	
 	
 	
 	
@@ -27,7 +28,23 @@ public class User {
 		this.firstName = firstName;
 		this.email = email;
 	}
-
+	
+	
+	public User(int id ,int photo){
+		this.image = photo;
+		this.id = id;
+	}
+	
+	public int getPhoto(){
+		return image;
+	}
+	
+	public void setPhoto(int photo){
+		this.image = photo;
+	
+	
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -87,13 +104,22 @@ public class User {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", firstName=" + firstName + ", lastName="
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", password=" + password + ", email=" + email
-				+ "]";
+				+ ", photo=" + image + "]";
 	}
+
+
+
+//	@Override
+//	public String toString() {
+//		return "Users [id=" + id + ", firstName=" + firstName + ", lastName="
+//				+ lastName + ", password=" + password + ", email=" + email
+//				+ "]";
+//	}
+	
 	
 	
 }
