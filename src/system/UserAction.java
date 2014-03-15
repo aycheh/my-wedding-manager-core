@@ -247,6 +247,34 @@ public List<Person> getallPersons (int user_id){
 		}	
 				return allPersons;
 	}
+	
+	public List<Person> searchPerson(String FirstName , String lastName, int user_id){	
+		if (FirstName == null && !lastName.isEmpty() || lastName==null && !FirstName.isEmpty()){
+			System.err.println("FirstName or lastName are empty : please insert seatch term in the fild" );
+			return null;
+		}
+		
+		Person pr = new Person(FirstName,lastName, user.getId());		
+		List<Person> persons = new ArrayList<Person>();		
+		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
+		persons = PersonDBManager.getInstance().searchPersonsName(con.getConnectionFromPool(),
+				pr.getFirstName(), pr.getLastName(),user_id);	
+		if (persons.isEmpty()){
+			System.err.println("There is no person matches your search term, please try a gaim .." );
+			return null;
+		}
+		for (Person pr1 : persons){
+			if(user_id != pr1.getUser_id()){
+				System.err.println("no person found, please try a gaim .." );
+				return null;	
+			}
+		
+		}
+		return persons;
+	}
+	
+	
+	
 }
 
 
