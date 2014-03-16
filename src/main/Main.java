@@ -33,7 +33,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
-		UserAction uac = my.login( "asher@gmail.com","1234");
+//		UserAction uac = my.login( "asher@gmail.com","1234");
 		//uac.searchPerson("%asher%" , "%a%",3);
 		
 		/**uploadUserPhoto**/
@@ -51,17 +51,17 @@ public class Main {
 //		}
 		
 		/**CreateUser with photo**/
-//		InputStream ips = null;
-//		File image = new File("/home/asher/Pictures/2012/05/13/CIMG0311.JPG");
-//		try {
-//			ips = new FileInputStream(image);
-//			User u = new User(0, "ab", "natan", "1234", "abnatan@gmail.com");
-//			//my.uploadUserPhoto(u, ips);
-//			my.CreateUser(u ,ips);
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		InputStream ips = null;
+		File image = new File("/home/asher/Pictures/2012/05/13/CIMG0311.JPG");
+		try {
+			ips = new FileInputStream(image);
+			User u = new User(0, "aba", "sheli", "1234", "abnatan@gmail.net");
+			//my.uploadUserPhoto(u, ips);
+			my.CreateUser(u ,ips);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		InputStream ips = new BufferedInputStream(new FileInputStream(path));
 //      BufferedImage image = ImageIO.read(ips);
