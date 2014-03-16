@@ -55,7 +55,7 @@ public class Main {
 		File image = new File("/home/asher/Pictures/2012/05/13/CIMG0311.JPG");
 		try {
 			ips = new FileInputStream(image);
-			User u = new User(0, "aba", "sheli", "1234", "abnatan@gmail.net");
+			User u = new User(0, "aba", "sheli", "1234", "abnatan@gmail.org");
 			//my.uploadUserPhoto(u, ips);
 			my.CreateUser(u ,ips);
 		} catch (FileNotFoundException e) {

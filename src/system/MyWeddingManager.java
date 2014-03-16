@@ -38,9 +38,19 @@ public class MyWeddingManager {
 	}
 	
 	public void CreateUser(User u,InputStream ips){
-		User user = new User(u.getId(),u.getFirstName(),u.getLastName(),u.getPassword(),u.getEmail());	
-		UsersDBManager.getInstance().CreateNewUser(con.getConnectionFromPool(), user);
-		uploadUserPhoto(user, ips);
+		User user = new User(u.getId(),u.getFirstName(),u.getLastName(),u.getPassword(),u.getEmail());
+		UserAction uac =  login(user.getEmail() ,user.getPassword());
+		if (uac == null){
+		try {
+			UsersDBManager.getInstance().CreateNewUser(con.getConnectionFromPool(), user);
+			uploadUserPhoto(user, ips);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}else{
+		System.out.println("user already have a photo");
+	  }
+		
 	}
 	
 	public UserAction login(String email , String password){		
