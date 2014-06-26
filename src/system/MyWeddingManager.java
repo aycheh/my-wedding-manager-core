@@ -71,6 +71,7 @@ public class MyWeddingManager {
 		if (user != null && password.equals(user.getPassword()) && email.equals(user.getEmail())){
 			user = new User(user.getId(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getEmail());
 		System.out.println("Wellcome  : "+ user.getFirstName());
+		GetUserPhoto(user,new UserAction(user));
 		return new UserAction(user);
 		}else{
 			System.err.println("Invalid user");

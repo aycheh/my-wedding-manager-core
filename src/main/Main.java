@@ -51,9 +51,9 @@ public class Main {
 //		}
 		
 		/**Get User Photo**/
-		User user = new User("asher@gmail.com");
-		System.out.println("GetUserPhoto(user)");
-		my.GetUserPhoto(user,uac);
+//		User user = new User("asher@gmail.com");
+//		System.out.println("GetUserPhoto(user)");
+//		my.GetUserPhoto(user,uac);
 		
 		/**CreateUser with photo**/
 //		InputStream ips = null;
