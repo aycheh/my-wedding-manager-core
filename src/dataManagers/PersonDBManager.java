@@ -56,7 +56,7 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 
 	@Override
 	public void UpdateAPerson(Connection con, Person p) {
-		// TODO Auto-generated method stub
+		// TODO check if needed to update user_id - i prefer not to update
 		System.out.println("UpdateAPerson(Connection con, Person p");
 		String sql = "update Person set " + "first_name =? ,"
 				+ "last_name =?, " + "relationship =?, " + "address = ? ,"

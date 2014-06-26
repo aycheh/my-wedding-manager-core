@@ -3,6 +3,7 @@ package system;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 
 import dataManagers.UsersDBManager;
 import dataManagers.WeddingConnectionPoolManager;
@@ -31,10 +32,21 @@ public class MyWeddingManager {
 		u = UsersDBManager.getInstance().GetUser(con.getConnectionFromPool(), u.getEmail());
 		if(ips != null){
 		UsersDBManager.getInstance().saveUserPhoto(con.getConnectionFromPool(), u, ips );
+		System.out.println("Image saved succssefully"); 
 		 }else{
-			 System.out.println("no Image");
+			 System.out.println("no Image"); 
 		  }
 		}
+	}
+	
+	public UserImage GetUserPhoto(User u,UserAction uac){
+		UserImage user_image = new UserImage(u.getId());
+		//UserAction uac =  login(u.getEmail() , u.getPassword());
+		if (uac !=null){
+			user_image =	UsersDBManager.getInstance().GetUserImage(con.getConnectionFromPool(),user_image.getUser_id());
+			System.out.println("user_image --- " + user_image);
+		}
+		return user_image;
 	}
 	
 	public void CreateUser(User u,InputStream ips){
