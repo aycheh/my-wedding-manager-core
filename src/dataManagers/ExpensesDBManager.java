@@ -50,6 +50,13 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
+			if (rs != null ){
+				rs.close();
+			}if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
 	
 		} catch (SQLException e) {
 			System.out.println("creating Expenses filed, try again");
@@ -87,6 +94,11 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.setString(1,exp.getPerson_firstName());
 			pstmt.setString(2,exp.getPerson_lastName());
 			pstmt.executeUpdate();
+			if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
 			
 		} catch (Exception e) {
 			System.err.println("From Sql --- > No UpdateAReceivedPayment found");
@@ -119,7 +131,13 @@ public class ExpensesDBManager implements ExpensesManager {
 	            String eventAddress = rs.getString("eventAddress");
 	            String comment = rs.getString("comment");
 	            Date date = rs.getDate("date");
-	            
+	            if (rs != null ){
+					rs.close();
+				}if (pstmt != null){
+					pstmt.close();
+				}if (con != null){
+					con.close();
+				}
 //	   		 long ts = System.currentTimeMillis();
 //	   		 java.sql.Date sqlDate = new Date(ts);
 	    
@@ -149,6 +167,11 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.setDouble(1, texp.getTotalReceived());
 			pstmt.setInt(3, texp.getUser_id());
 			pstmt.executeUpdate();
+			  if (pstmt != null){
+					pstmt.close();
+				}if (con != null){
+					con.close();
+				}
 			
 		} catch (Exception e) {
 			System.err.println("From Sql --- > No user for TotalExpenses found");
@@ -172,7 +195,13 @@ public class ExpensesDBManager implements ExpensesManager {
 				expensesToReturn.setUser_id(rs.getInt(2));
 				expensesToReturn.setTotalReceived(rs.getDouble(3));
 				expensesToReturn.setTotalExpenses(rs.getDouble(4));
-				
+				  if (rs != null ){
+						rs.close();
+					}if (pstmt != null){
+						pstmt.close();
+					}if (con != null){
+						con.close();
+					}
 			}
 			
 		} catch (SQLException e) {
@@ -197,6 +226,13 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
+			  if (rs != null ){
+					rs.close();
+				}if (pstmt != null){
+					pstmt.close();
+				}if (con != null){
+					con.close();
+				}
 			
 		} catch (Exception e) {
 			System.out.println("creating createTotalExpenses filed, try again");
@@ -229,6 +265,13 @@ public class ExpensesDBManager implements ExpensesManager {
 				expensesByIDToReturn.setEventAddress(rs.getString(11));
 				expensesByIDToReturn.setComment(rs.getString(12));
 				expensesByIDToReturn.setDate(rs.getDate(13));
+				  if (rs != null ){
+						rs.close();
+					}if (pstmt != null){
+						pstmt.close();
+					}if (con != null){
+						con.close();
+					}
 
 			}
 			
@@ -255,8 +298,12 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.setString(1,exp.getPerson_firstName());
 			pstmt.setString(2,exp.getPerson_lastName());
 			pstmt.setInt(5,exp.getUser_id());
-			
 			pstmt.executeUpdate();
+			  if (pstmt != null){
+					pstmt.close();
+				}if (con != null){
+					con.close();
+				}
 			
 		} catch (Exception e) {
 			System.err.println("From Sql --- > No UpdateAReceivedPayment found");
@@ -278,8 +325,12 @@ public class ExpensesDBManager implements ExpensesManager {
 			pstmt.setString(2,person_lastName);
 			pstmt.setInt(3,person_id);
 			pstmt.setInt(4,user_id);
-			
 			pstmt.executeUpdate();
+			 if (pstmt != null){
+					pstmt.close();
+				}if (con != null){
+					con.close();
+				}
 			
 		} catch (Exception e) {
 			System.err.println("From Sql --- > No UpdateAReceivedPayment found");

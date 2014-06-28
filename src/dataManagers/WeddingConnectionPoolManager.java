@@ -10,8 +10,7 @@ import java.util.List;
 public class WeddingConnectionPoolManager {
 
 	private  String databaseUrl = "jdbc:mysql://localhost:3306/MyWeddingManagerDB?useUnicode=yes&characterEncoding=UTF-8";
-	//private  String databaseUrl = "jdbc:mysql://localhost:3306/myhebrew_db";
-	                                //jdbc:mysql://localhost:3306/db_name?useUnicode=yes&characterEncoding=UTF-8
+	//jdbc:mysql://localhost:3306/db_name?useUnicode=yes&characterEncoding=UTF-8
 	private  String userName = "root";
 	private  String password = "root";
 	
@@ -47,7 +46,7 @@ public class WeddingConnectionPoolManager {
 	 }
 
 	 private synchronized boolean checkIfConnectionPoolIsFull(){
-	  final int MAX_POOL_SIZE = 10 ;
+	  final int MAX_POOL_SIZE = 5 ;
 
 	  //Check if the pool size
 	  if(connectionPool.size() < MAX_POOL_SIZE){

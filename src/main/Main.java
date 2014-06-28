@@ -51,9 +51,9 @@ public class Main {
 //		}
 		
 		/**Get User Photo**/
-//		User user = new User("asher@gmail.com");
-//		System.out.println("GetUserPhoto(user)");
-//		my.GetUserPhoto(user,uac);
+		User user = new User("asher@gmail.com");
+		System.out.println("GetUserPhoto(user)");
+		my.GetUserPhoto(user,uac);
 		
 		/**CreateUser with photo**/
 //		InputStream ips = null;
@@ -80,7 +80,7 @@ public class Main {
 //		my.CreateUser(u);
 //--------------------------------	
 //		UserAction uac = new UserAction();
-//		uac.getUser("asher@gmail.com");	
+		uac.getUser("asher@gmail.com");	
 //-------------------------------------------
 		//User u = new User(0,"Tekle","seffefe","1234","tekle@hotmaol.com");
 		//uac.Updateuser(u);
@@ -88,19 +88,19 @@ public class Main {
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
 		
-//		User ur = uac.getUser("asher@gmail.com");
-		//Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
-		//uac.CreatePersonsByFLRUId(pr);
-		//uac.getallPersons(3);
+		User ur = uac.getUser("asher@gmail.com");
+		Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
+		uac.CreatePersonsByFLRUId(pr);
+		uac.getallPersons(3);
 		
 		
 		
 		
 //---------------------------------------------
-		//User u = uac.getUser("mes@gmail.com");
-		//Person pr = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
-		//uac.updatePerson(pr);
-		//uac.getallPersons(3);
+//		User u = uac.getUser("mes@gmail.com");
+//		Person pr = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
+//		uac.updatePerson(pr);
+//		uac.getallPersons(3);
 ////------------------------------------------------
 		//Person pr = new Person(0,"yy","yy","yy","USA","054-4330272","yy@gmail.net","yy per+toa+py",7);
 		//System.out.println("ssssssssssssssrrrrrrrr " + pr);

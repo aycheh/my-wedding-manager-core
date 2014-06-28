@@ -28,6 +28,7 @@ public class UsersDBManager implements UsersManager {
 	@Override
 	public void CreateNewUser(Connection con, User u) {
 		// TODO Exception handling 
+		
 		try {
 			String sql = "insert into Users value (?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -40,11 +41,18 @@ public class UsersDBManager implements UsersManager {
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
-			
+			if (rs != null ){
+				rs.close();
+			}if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
 		} catch (Exception e) {
 			System.out.println("creating user filed, try again");
 			e.printStackTrace();
 		}
+		
 		
 		
 	}
@@ -60,9 +68,13 @@ public class UsersDBManager implements UsersManager {
 			pstmt.setString(2,u.getLastName());
 			pstmt.setString(3,u.getPassword());
 			pstmt.setString(4, u.getEmail());
-			
 			pstmt.executeUpdate();
 			System.out.println(" SQL UpdateAuser : User successfully updated "); 
+			if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
 		} catch (Exception e) {
 			System.out.println("updating user filed, try again");
 			e.printStackTrace();
@@ -87,11 +99,19 @@ public class UsersDBManager implements UsersManager {
 				UserToReturn.setPassword(rs.getString(4));
 				UserToReturn.setEmail(rs.getString(5));	
 			}
+			if (rs != null ){
+				rs.close();
+			}if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
 			
 		} catch (SQLException e) {
 			System.out.println("No User found , try again");
 			e.printStackTrace();
 		}
+		//System.out.println("check if con = null = " + con);
 		return UserToReturn;
 		
 	}
@@ -107,18 +127,21 @@ public class UsersDBManager implements UsersManager {
             PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, u.getId());
             statement.setString(2, u.getFirstName());
-            statement.setString(3, u.getLastName());
-             
+            statement.setString(3, u.getLastName()); 
             if (ips != null) {
                 // fetches input stream of the upload file for the blob column
                 statement.setBlob(4, ips);
             }
- 
             // sends the statement to the database server
             int row = statement.executeUpdate();
             if (row > 0) {
                 System.out.println("File uploaded and saved into database");
             }
+        	if (statement != null){
+				statement.close();
+			}if (con != null){
+				con.close();
+			}
         } catch (SQLException ex) {
            
             ex.printStackTrace();
@@ -141,6 +164,14 @@ public class UsersDBManager implements UsersManager {
 		       user_imageToreturn.setLast_name(rs.getString(4));
 		       user_imageToreturn.setPhoto(rs.getBlob(5));
 			}
+			if (rs != null ){
+				rs.close();
+			}if (pstmt != null){
+				pstmt.close();
+			}if (con != null){
+				con.close();
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
