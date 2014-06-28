@@ -50,12 +50,17 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
+		/**Get User Photo**/
+//		User user = new User("asher@gmail.com");
+//		System.out.println("GetUserPhoto(user)");
+//		my.GetUserPhoto(user,uac);
+		
 		/**CreateUser with photo**/
 //		InputStream ips = null;
 //		File image = new File("/home/asher/Pictures/2012/05/13/CIMG0311.JPG");
 //		try {
 //			ips = new FileInputStream(image);
-//			User u = new User(0, "ab", "natan", "1234", "abnatan@gmail.com");
+//			User u = new User(0, "aba", "sheli", "1234", "abnatan@gmail.org");
 //			//my.uploadUserPhoto(u, ips);
 //			my.CreateUser(u ,ips);
 //		} catch (FileNotFoundException e) {
@@ -201,3 +206,64 @@ public class Main {
 	}
 
 }
+
+/**how to convert blob into bytearray**/
+//loadset.getString("image"); 
+//
+//byte[] bytearray; 
+//
+//Blob blobimg=loadset.getBlob("image"); 
+//
+//if(blobimg!= null) 
+//
+//{ 
+//
+//BufferedInputStream bis = new BufferedInputStream(blobimg.getBinaryStream()); 
+//
+//ByteArrayOutputStream bao = new ByteArrayOutputStream(); 
+//
+//byte[] buffer = new byte[4096]; 
+//
+//int length = 0; 
+//
+//while ((length = bis.read(buffer)) != -1) 
+//
+//{ 
+//
+//JOptionPane.showMessageDialog (null,"writing image"); 
+//
+//bao.write(buffer, 0, length); 
+//
+//} 
+//
+//bao.close(); 
+//
+//bis.close(); 
+//
+//bytearray = bao.toByteArray(); 
+//
+//ImageIcon icon=new ImageIcon(bytearray); 
+//
+//imagelabel.setIcon(icon); 
+//
+//} 
+/** another option is **/ 
+//he mySql blob class has the following function :
+//
+//blob.getBytes
+//
+//use it like this:
+//
+////(assuming you have a ResultSet named RS)
+//Blob blob = rs.getBlob("SomeDatabaseField");
+//
+//int blobLength = (int) blob.length();  
+//byte[] blobAsBytes = blob.getBytes(1, blobLength);
+//
+////release the blob and free up memory. (since JDBC 4.0)
+//blob.free();
+
+
+
+
+

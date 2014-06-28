@@ -1,6 +1,8 @@
 package dataManagers;
 
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.security.acl.LastOwnerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import system.User;
+import system.UserImage;
 
 public class UsersDBManager implements UsersManager {
 	private static UsersDBManager instance;
@@ -93,6 +96,9 @@ public class UsersDBManager implements UsersManager {
 		
 	}
 
+
+	
+	
 	@Override
 	public void saveUserPhoto(Connection con, User u , InputStream ips) {
 		try {
@@ -117,6 +123,29 @@ public class UsersDBManager implements UsersManager {
            
             ex.printStackTrace();
         }
+	}
+
+	@Override
+	public UserImage GetUserImage(Connection con, int user_id) {
+		// TODO Auto-generated method stub
+		UserImage user_imageToreturn = null;
+		try {
+			PreparedStatement pstmt = con.prepareStatement("select * from user_image where user_id = ?");
+			pstmt.setInt(1, user_id);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+		       user_imageToreturn = new UserImage(rs.getInt(2));
+		       user_imageToreturn.setId(rs.getInt(1));
+		       user_imageToreturn.setUser_id(rs.getInt(2));
+		       user_imageToreturn.setFirst_name(rs.getString(3));
+		       user_imageToreturn.setLast_name(rs.getString(4));
+		       user_imageToreturn.setPhoto(rs.getBlob(5));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user_imageToreturn;
 	}
 
 }
