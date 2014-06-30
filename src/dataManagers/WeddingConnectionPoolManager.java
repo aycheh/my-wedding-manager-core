@@ -10,8 +10,7 @@ import java.util.List;
 public class WeddingConnectionPoolManager {
 
 	private  String databaseUrl = "jdbc:mysql://localhost:3306/MyWeddingManagerDB?useUnicode=yes&characterEncoding=UTF-8";
-	//private  String databaseUrl = "jdbc:mysql://localhost:3306/myhebrew_db";
-	                                //jdbc:mysql://localhost:3306/db_name?useUnicode=yes&characterEncoding=UTF-8
+	//jdbc:mysql://localhost:3306/db_name?useUnicode=yes&characterEncoding=UTF-8
 	private  String userName = "root";
 	private  String password = "root";
 	
@@ -39,11 +38,11 @@ public class WeddingConnectionPoolManager {
 	 private void initializeConnectionPool(){
 		 
 	  while(!checkIfConnectionPoolIsFull()){
-//System.out.println("Connection Pool is NOT full. Proceeding with adding new connections");
+System.out.println("Connection Pool is NOT full. Proceeding with adding new connections");
 	   //Adding new connection instance until the pool is full
 	   connectionPool.add(createNewConnectionForPool());
 	  }
-//System.out.println("Connection Pool is full.");
+System.out.println("Connection Pool is full.");
 	 }
 
 	 private synchronized boolean checkIfConnectionPoolIsFull(){
@@ -89,11 +88,13 @@ public class WeddingConnectionPoolManager {
 	   connectionPool.remove(0);
 	  }
 	  //Giving away the connection from the connection pool
+//System.out.println("Giving away the connection from the connection pool");
 	  return connection;
 	 }
 
 	 public synchronized void returnConnectionToPool(Connection connection){
 	  //Adding the connection from the client back to the connection pool
+		 System.out.println("Adding the connection from the client back to the connection pool");
 	  connectionPool.add(connection);
 	 }
 

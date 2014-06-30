@@ -33,25 +33,28 @@ public class Main {
 
 	public static void main(String[] args) {
 		MyWeddingManager my = MyWeddingManager.getInstance();
-		UserAction uac = my.login( "asher@gmail.com","1234");
-		//uac.searchPerson("%asher%" , "%a%",3);
+		UserAction uac = my.login( "s@a.com","1234");
 		
+	
+	
 		/**uploadUserPhoto**/
 //		InputStream ips = null;
-//		File image = new File("/home/asher/Pictures/2012/05/היליי ופזית באמבטיה/CIMG0410.JPG");
+//		File image = new File("/home/asher/Pictures/from my iphon/2011/2011-04-30_19-04-57.jpg");
 //		
 //		try {
 //			ips = new FileInputStream(image);
-//			System.out.println(image.length()/1000);
-//			User user = new User(1,"asher","Aycheh","1234","asher@gmail.com");
-//			my.uploadUserPhoto(user, ips);
+//			System.out.println("user Image --------- >> = " + image.length()/1000 + image.getName());
+//			User ur = new User(0,"asher","aycheh","1234","asher@gmail.com");
+//			ur = uac.getUser(ur.getEmail());
+//			System.out.println("ur = ------- > " + ur);
+//			my.uploadUserPhoto(ur, ips);
 //		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
+//			System.out.println("No Image resived--------------");
 //			e.printStackTrace();
 //		}
 		
 		/**Get User Photo**/
-//		User user = new User("asher@gmail.com");
+//		User user = new User("s@a.com");
 //		System.out.println("GetUserPhoto(user)");
 //		my.GetUserPhoto(user,uac);
 		
@@ -88,19 +91,19 @@ public class Main {
 		//Person pr = new Person(0,"Tigi","Aycheh","a sister","New York 2","054-4450272","Mesi@gmail.com","3 creating person",0);
 		//uac.CreatePerson(pr);
 		
-//		User ur = uac.getUser("asher@gmail.com");
-		//Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
-		//uac.CreatePersonsByFLRUId(pr);
-		//uac.getallPersons(3);
+		User ur = uac.getUser("asher@gmail.com");
+		Person pr = new Person(29,"dandin","setu","ant","natania","054-4450272","wq@gmail.com","3 creating person",ur.getId());
+		uac.CreatePersonsByFLRUId(pr);
+		uac.getallPersons(3);
 		
 		
 		
 		
 //---------------------------------------------
-		//User u = uac.getUser("mes@gmail.com");
-		//Person pr = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
-		//uac.updatePerson(pr);
-		//uac.getallPersons(3);
+		User u = uac.getUser("mes@gmail.com");
+		Person per = new Person(29,"Tekle","seffefe","abro","Tal aviv","054-4450272","tekle@gmail.com"," acording to id",1);
+		uac.updatePerson(per);
+		uac.getallPersons(3);
 ////------------------------------------------------
 		//Person pr = new Person(0,"yy","yy","yy","USA","054-4330272","yy@gmail.net","yy per+toa+py",7);
 		//System.out.println("ssssssssssssssrrrrrrrr " + pr);

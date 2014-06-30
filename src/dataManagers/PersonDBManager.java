@@ -48,6 +48,11 @@ public class PersonDBManager implements PersonManager {
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
 System.out.println( "SQL srom insert person - rs  ...." + rs);
+			 
+				rs.close();
+				pstmt.close();		 
+				con.close();
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -75,6 +80,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 			pstmt.setString(8, p.getComment());
 			pstmt.executeUpdate();
 			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
+			
+			pstmt.close();		 
+			con.close();
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -105,6 +114,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 				PersonToReturn.setUser_id(rs.getInt(8));
 				PersonToReturn.setComment(rs.getString(9));
 				System.out.println("FROM PersonToReturn QUERY :" + PersonToReturn);
+				
+				rs.close();
+				pstmt.close();		 
+				con.close();
 			}
 		} catch (Exception e) {
 			System.out
@@ -141,10 +154,13 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 				PersonByIDToReturn.setPhone(rs.getString(7));
 				PersonByIDToReturn.setUser_id(rs.getInt(8));
 				PersonByIDToReturn.setComment(rs.getString(9));
-				
 				System.out.println("PersonByIDToReturn  = "
 						+ PersonByIDToReturn);
 				System.out.println("SQL Person By ID ToReturn--->) " + PersonByIDToReturn);
+				
+				rs.close();
+				pstmt.close();		 
+				con.close();
 			}
 		} catch (Exception e) {
 			System.out
@@ -179,6 +195,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String email = rs.getString("email");	            
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
+	            
+	            rs.close();
+				pstmt.close();		 
+				con.close();
 
 //System.out.println("SQL QUERY FOR - allPersons :::::>>" + allPersons);	            
 	   		// long ts = System.currentTimeMillis();
@@ -216,6 +236,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 			pstmt.setString(2, p.getLastName());
 			pstmt.executeUpdate();
 			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
+			
+			pstmt.close();		 
+			con.close();
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -242,7 +266,11 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
 	            
-	            allPersons.add(new Person(id, first_name, last_name, 
+	            rs.close();
+				pstmt.close();		 
+				con.close();
+	            
+				allPersons.add(new Person(id, first_name, last_name, 
 	            		relationship, address, phone, email, comment, user_id1));   
 
 	        }  
@@ -275,7 +303,11 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String email = rs.getString("email");	            
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
-
+	            
+	            rs.close();
+				pstmt.close();		 
+				con.close();
+				
             allPersons.add(new Person(id, first_name1, last_name1, 
 	            		relationship1, address, phone, email, comment, user_id1));
 	        }  
