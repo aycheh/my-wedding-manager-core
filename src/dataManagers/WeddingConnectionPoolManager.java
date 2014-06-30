@@ -46,7 +46,7 @@ System.out.println("Connection Pool is full.");
 	 }
 
 	 private synchronized boolean checkIfConnectionPoolIsFull(){
-	  final int MAX_POOL_SIZE = 20 ;
+	  final int MAX_POOL_SIZE = 10 ;
 
 	  //Check if the pool size
 	  if(connectionPool.size() < MAX_POOL_SIZE){

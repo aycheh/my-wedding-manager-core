@@ -48,13 +48,11 @@ public class PersonDBManager implements PersonManager {
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
 System.out.println( "SQL srom insert person - rs  ...." + rs);
-			if (rs != null ){
+			 
 				rs.close();
-			}if (pstmt != null){
-				pstmt.close();
-			}if (con != null){
+				pstmt.close();		 
 				con.close();
-			}
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -82,11 +80,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 			pstmt.setString(8, p.getComment());
 			pstmt.executeUpdate();
 			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
-			  if (pstmt != null){
-					pstmt.close();
-				}if (con != null){
-					con.close();
-				}
+			
+			pstmt.close();		 
+			con.close();
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -117,13 +114,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 				PersonToReturn.setUser_id(rs.getInt(8));
 				PersonToReturn.setComment(rs.getString(9));
 				System.out.println("FROM PersonToReturn QUERY :" + PersonToReturn);
-				  if (rs != null ){
-						rs.close();
-					}if (pstmt != null){
-						pstmt.close();
-					}if (con != null){
-						con.close();
-					}
+				
+				rs.close();
+				pstmt.close();		 
+				con.close();
 			}
 		} catch (Exception e) {
 			System.out
@@ -163,13 +157,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 				System.out.println("PersonByIDToReturn  = "
 						+ PersonByIDToReturn);
 				System.out.println("SQL Person By ID ToReturn--->) " + PersonByIDToReturn);
-				  if (rs != null ){
-						rs.close();
-					}if (pstmt != null){
-						pstmt.close();
-					}if (con != null){
-						con.close();
-					}
+				
+				rs.close();
+				pstmt.close();		 
+				con.close();
 			}
 		} catch (Exception e) {
 			System.out
@@ -204,13 +195,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String email = rs.getString("email");	            
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
-	            if (rs != null ){
-					rs.close();
-				}if (pstmt != null){
-					pstmt.close();
-				}if (con != null){
-					con.close();
-				}
+	            
+	            rs.close();
+				pstmt.close();		 
+				con.close();
 
 //System.out.println("SQL QUERY FOR - allPersons :::::>>" + allPersons);	            
 	   		// long ts = System.currentTimeMillis();
@@ -248,11 +236,10 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 			pstmt.setString(2, p.getLastName());
 			pstmt.executeUpdate();
 			System.out.println("SQL : pstmt.executeUpdate()" + pstmt);
-			  if (pstmt != null){
-					pstmt.close();
-				}if (con != null){
-					con.close();
-				}
+			
+			pstmt.close();		 
+			con.close();
+			
 		} catch (SQLException e) {
 			System.out.println("creating peson filed, try again");
 			e.printStackTrace();
@@ -278,14 +265,12 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String email = rs.getString("email");	            
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
-	            if (rs != null ){
-					rs.close();
-				}if (pstmt != null){
-					pstmt.close();
-				}if (con != null){
-					con.close();
-				}  
-	            allPersons.add(new Person(id, first_name, last_name, 
+	            
+	            rs.close();
+				pstmt.close();		 
+				con.close();
+	            
+				allPersons.add(new Person(id, first_name, last_name, 
 	            		relationship, address, phone, email, comment, user_id1));   
 
 	        }  
@@ -318,13 +303,11 @@ System.out.println( "SQL srom insert person - rs  ...." + rs);
 	            String email = rs.getString("email");	            
 	            String phone = rs.getString("phone");  
 	            String comment = rs.getString("comment");
-	            if (rs != null ){
-					rs.close();
-				}if (pstmt != null){
-					pstmt.close();
-				}if (con != null){
-					con.close();
-				}
+	            
+	            rs.close();
+				pstmt.close();		 
+				con.close();
+				
             allPersons.add(new Person(id, first_name1, last_name1, 
 	            		relationship1, address, phone, email, comment, user_id1));
 	        }  
