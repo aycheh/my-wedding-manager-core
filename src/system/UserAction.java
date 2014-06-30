@@ -3,9 +3,6 @@ package system;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.AbstractDocument.BranchElement;
-
 import dataManagers.ExpensesDBManager;
 import dataManagers.PersonDBManager;
 import dataManagers.UsersDBManager;
@@ -13,36 +10,17 @@ import dataManagers.WeddingConnectionPoolManager;
 
 
 public class UserAction {
- 
-	private int id;
-	private Expenses expenses;
-	private Person person;
 	private User user;
-	protected WeddingConnectionPoolManager con;
 	
 	public UserAction (User user){
 		this.user = user;
 		
 	}
-	public UserAction(int id, Expenses expenses, Person person, User user) {
-		super();
-		this.id = id;
-		this.expenses = expenses;
-		this.person = person;
-		this.user = user;
-	}
-	
+
 	public UserAction(){
 	
 	}
-	
-public UserAction(Person person, User user) {
-	super();
-	this.person = person;
-	this.user = user;
-}
 
-	
 	public User getUser(String email){	
 	User user = new User(email);	
 	WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();
@@ -54,9 +32,7 @@ public UserAction(Person person, User user) {
 	}
 	return user;
 	}
-	
-	
-	
+
 	public Person getPerson(int id){
 		Person p = new Person(id);
 		WeddingConnectionPoolManager con = new WeddingConnectionPoolManager();

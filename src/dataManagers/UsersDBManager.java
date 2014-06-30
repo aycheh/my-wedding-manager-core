@@ -141,6 +141,7 @@ public class UsersDBManager implements UsersManager {
 				statement.close();
 			}if (con != null){
 				con.close();
+				System.out.println("connection saveUserPhoto closed");
 			}
         } catch (SQLException ex) {
            
@@ -166,10 +167,13 @@ public class UsersDBManager implements UsersManager {
 			}
 			if (rs != null ){
 				rs.close();
+				System.out.println("rs GetUserImage closed");
 			}if (pstmt != null){
 				pstmt.close();
+				System.out.println("pstmt GetUserImage closed");
 			}if (con != null){
 				con.close();
+				System.out.println("connection GetUserImage closed");
 			}
 			
 		} catch (SQLException e) {
